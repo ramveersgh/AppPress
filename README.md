@@ -11,10 +11,10 @@ See [AppPress Developer Guide](http://apppress.in)
 
 
 ## Quick Start
-The easiest and fastest way to have a quick look on AppPress to check out / download the code and follow below steps - 
-'1. Download the code.
-'2. Open DB Script and run it in your sql server.
------
+The easiest and fastest way to have a quick look on AppPress to check out / download the code and follow below steps 
+*Download the code.*
+*Open DB Script and run it in your sql server.*
+
 comming soon
 
 
