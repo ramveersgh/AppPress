@@ -1,0 +1,307 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title><!--|AppPress.ProductName.Begin|-->AppPressValue<!--|AppPress.ProductName.End|--> | <!--|AppPress.Title.Begin|-->AppPressValue<!--|AppPress.Title.End|--></title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <META NAME="robots" CONTENT="noindex">
+    <link href="AdminLTETemplate/plugins/jQueryUI/jquery-ui.css?t=<!--@AppPress.startTime@-->" rel="stylesheet" />
+    <link href="AdminLTETemplate/bootstrap/css/bootstrap.css?t=<!--@AppPress.startTime@-->" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" type="image/png" href="Resources/img/favicon.png" />
+    <link href="AdminLTETemplate/dist/css/skins/_all-skins.css?t=<!--@AppPress.startTime@-->" rel="stylesheet" type="text/css" />
+    <link href="AdminLTETemplate/plugins/iCheck/all.css" rel="stylesheet" type="text/css" />
+    <link href="AdminLTETemplate/plugins/morris/morris.css" rel="stylesheet" type="text/css" />
+    <link href="AdminLTETemplate/plugins/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
+    <link href="AdminLTETemplate/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="AdminLTETemplate/plugins/fullcalendar/fullcalendar.min.css" />
+    <link rel="stylesheet" href="AdminLTETemplate/plugins/colorbox/colorbox.css?t=1" />
+    <link rel="stylesheet" href="AdminLTETemplate/plugins/select2/select2.min.css?t=<!--@AppPress.startTime@-->">
+    <link href="AdminLTETemplate/dist/css/AdminLTE.css?t=<!--@AppPress.startTime@-->" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" type="text/css" href="Resources/css/AppPress.css?t=<!--@AppPress.startTime@-->">
+    <link rel="stylesheet" type="text/css" href="Resources/css/AppPressDemo.css?t=<!--@AppPress.startTime@-->">
+
+    <script src="AdminLTETemplate/plugins/jQuery/jQuery-2.2.3.min.js"></script>
+    <script src="AdminLTETemplate/bootstrap/js/bootstrap.min.js?t=<!--@AppPress.startTime@-->" type="text/javascript"></script>
+    <script src="AdminLTETemplate/plugins/jQueryUI/jquery-ui.min.js?t=<!--@AppPress.startTime@-->" type="text/javascript"></script>
+    <script src="AdminLTETemplate/plugins/ckeditor/ckeditor.js?t=<!--@AppPress.startTime@-->"></script>
+    <script src="AdminLTETemplate/plugins/select2/select2.js?t=<!--@AppPress.startTime@-->"></script>
+    <script src="AdminLTETemplate/plugins/fileUploadUI/js/vendor/jquery.ui.widget.js"></script>
+    <script src="AdminLTETemplate/plugins/fileUploadUI/js/jquery.iframe-transport.js"></script>
+    <script src="AdminLTETemplate/plugins/fileUploadUI/js/jquery.fileupload.js"></script>
+    <script src="AdminLTETemplate/plugins/fullcalendar/moment.min.js"></script>
+    <script src="AdminLTETemplate/plugins/fullcalendar/fullcalendar.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="Resources/js/AppPress.js?t=<!--@AppPress.startTime@-->"></script>
+    <script src="Resources/js/AppPressDemo.js?t=<!--@AppPress.startTime@-->"></script>
+    <script src="AdminLTETemplate/plugins/textarea/textarea.autosize.js?t=1"></script>
+    <script src="AdminLTETemplate/plugins/iCheck/icheck.min.js" type="text/javascript"></script>
+
+    AppPressHTMLHeader
+
+    <script>
+        SkinInit();
+        function AppPressRefresh() {
+            $(function () {
+                _AppPressRefresh();
+            });
+        }
+        $(function () {
+            _AppPressRefresh();
+        });
+    </script>
+
+    <!--|AppPress.AppAnalytics.Begin|-->
+    AppPressValue
+    <!--|AppPress.AppAnalytics.End|-->
+</head>
+<body class="hold-transition skin-blue sidebar-mini" onload='MoveItemsToHeader();'>
+    <div class="wrapper">
+        <header class="main-header">
+            <!--|AppPress.ProductURL.Begin|-->
+            <a href='AppPressValue' class="logo" target="_blank">
+                <!--|AppPress.ProductURL.End|-->
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini">
+                    <!--|AppPress.ProductIcon.Begin|-->
+                    <img src="AppPressValue" style="height:30px;" />
+                    <!--|AppPress.ProductIcon.End|-->
+                </span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg">
+                    <!--|AppPress.ProductLogo.Begin|-->
+                    <img src='AppPressValue' style="height:25px" />
+                    <!--|AppPress.ProductLogo.End|-->
+                </span>
+            </a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button" style="font-size: 22px;padding: 10px;">
+                    <span class="sr-only">Toggle navigation</span>
+                    <!--|AppPress.Title.Begin|-->
+                    <span style="font-family: sans-serif">AppPressValue</span>
+                    <!--|AppPress.Title.End|-->
+                </a>
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown user user-menu" style="float:right">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <!--|AppPress.EmployeeImgUrl.Begin|-->
+                                <img src='AppPressValue' class="user-image" alt="User Image" />
+                                <!--|AppPress.EmployeeImgUrl.End|-->
+                                <!--|AppPress.EmployeeName.Begin|--><span id='AppPressContainerId' class="hidden-xs">AppPressValue</span><!--|AppPress.EmployeeName.End|-->
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header">
+                                    <!--|AppPress.EmployeeImgUrl.Begin|-->
+                                    <img src='AppPressValue' class="img-circle" alt="User Image" />
+                                    <!--|AppPress.EmployeeImgUrl.End|-->
+                                    <p>
+                                        <!--|AppPress.EmployeeEmail.Begin|-->
+                                        <small>AppPressValue</small>
+                                        <!--|AppPress.EmployeeEmail.End|-->
+                                    </p>
+                                </li>
+                                <!-- Menu Footer-->
+                                <!--|AppPress.Signout.Begin|-->
+                                <li id='AppPressContainerId' class="user-footer">
+                                    <div class="pull-right">
+                                        <a class="btn btn-default btn-flat" id='AppPressId' onclick='AppPressOnClick'>
+                                            Signout
+                                        </a>
+                                    </div>
+                                    <span id='AppPressErrorId'></span>
+                                </li>
+                                <!--|AppPress.Signout.End|-->
+                            </ul>
+                        </li>
+                        <li id="_HelpDestination" class="dropdown messages-menu" style="float:right;font-size:18px">
+                            <!--<a href='#' target="_blank" title="Help Manual" class="margintop4">-->
+                            <a class="iframe" title='Help' href="#" target="_blank">
+                                <i class="fa fa-question-circle"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <aside class="main-sidebar">
+            <section class="sidebar">
+                <ul id="nav" class="sidebar-menu" style="visibility:visible; display:block">
+                    <li class="treeview">
+                        <!--|AppPress.GeneralMenu.Begin|-->
+                        <a href="#">
+                            <i class="fa fa-dashboard"></i> <span>GENERAL</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <!--|AppPress.GeneralMenu.End|-->
+                        <ul class="treeview-menu">
+                            <li class="treeview">
+                                <!--|AppPress.Dashboard.Begin|-->
+                                <a id='AppPressId' formName='AppPressFieldName' onclick='AppPressOnClick'>
+                                    <i class="fa menu-icon"><img src="Resources/img/Menu_AppPressFieldName.png"></i><span>AppPressDisplayName</span>
+                                </a>
+                                <!--|AppPress.Dashboard.End|-->
+                            </li>
+                        </ul>
+                    </li>
+                    <!--Demo Skin Start-->
+                    <li class="treeview apppress-menu-open">
+                        <a href="#">
+                            <i class="fa fa-dashboard"></i> <span>DEMO</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li class="treeview">
+                                <!--|AppPress.UIElements.Begin|-->
+                                <a id='AppPressId' formName='AppPressFieldName' onclick='AppPressOnClick'>
+                                    <i class="fa menu-icon"><img src="Resources/img/Menu_uielements.png"></i><span>AppPressDisplayName</span>
+                                </a>
+                                <!--|AppPress.UIElements.End|-->
+                            </li>
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-dashboard"></i> <span>FORM CONTAINER GRID</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li class="treeview">
+                                        <!--|AppPress.Grid.Begin|-->
+                                        <a id='AppPressId' formName='AppPressFieldName' onclick='AppPressOnClick'>
+                                            <i class="fa menu-icon"><img src="Resources/img/Menu_AppPressFieldName.png"></i><span>AppPressDisplayName</span>
+                                        </a>
+                                        <!--|AppPress.Grid.End|-->
+                                    </li>
+                                    <li class="treeview">
+                                        <!--|AppPress.GridFixedHeaders.Begin|-->
+                                        <a id='AppPressId' formName='AppPressFieldName' onclick='AppPressOnClick'>
+                                            <i class="fa menu-icon"><img src="Resources/img/Menu_AppPressFieldName.png"></i><span>AppPressDisplayName</span>
+                                        </a>
+                                        <!--|AppPress.GridFixedHeaders.End|-->
+                                    </li>
+                                    <li class="treeview">
+                                        <!--|AppPress.GridVariableColumns.Begin|-->
+                                        <a id='AppPressId' formName='AppPressFieldName' onclick='AppPressOnClick'>
+                                            <i class="fa menu-icon"><img src="Resources/img/Menu_AppPressFieldName.png"></i><span>AppPressDisplayName</span>
+                                        </a>
+                                        <!--|AppPress.GridVariableColumns.End|-->
+                                    </li>
+                                </ul>
+                            <li class="treeview">
+                                <!--|AppPress.FormContainerDynamic.Begin|-->
+                                <a id='AppPressId' formName='AppPressFieldName' onclick='AppPressOnClick'>
+                                    <i class="fa menu-icon"><img src="Resources/img/Menu_AppPressFieldName.png"></i><span>AppPressDisplayName</span>
+                                </a>
+                                <!--|AppPress.FormContainerDynamic.End|-->
+                            </li>
+                            <li class="treeview">
+                                <!--|AppPress.DynamicForms.Begin|-->
+                                <a id='AppPressId' formName='AppPressFieldName' onclick='AppPressOnClick'>
+                                    <i class="fa menu-icon"><img src="Resources/img/Menu_AppPressFieldName.png"></i><span>AppPressDisplayName</span>
+                                </a>
+                                <!--|AppPress.DynamicForms.End|-->
+                            </li>
+                            <li class="treeview">
+                                <!--|AppPress.AutoBinding.Begin|-->
+                                <a id='AppPressId' formName='AppPressFieldName' onclick='AppPressOnClick'>
+                                    <i class="fa menu-icon"><img src="Resources/img/Menu_AppPressFieldName.png"></i><span>AppPressDisplayName</span>
+                                </a>
+                                <!--|AppPress.AutoBinding.End|-->
+                            </li>
+                            <li class="treeview">
+                                <!--|AppPress.NavigationFunctions.Begin|-->
+                                <a id='AppPressId' formName='AppPressFieldName' onclick='AppPressOnClick'>
+                                    <i class="fa menu-icon"><img src="Resources/img/Menu_AppPressFieldName.png"></i><span>AppPressDisplayName</span>
+                                </a>
+                                <!--|AppPress.NavigationFunctions.End|-->
+                            </li>
+                            <li class="treeview">
+                                <!--|AppPress.DownloadFunctions.Begin|-->
+                                <a id='AppPressId' formName='AppPressFieldName' onclick='AppPressOnClick'>
+                                    <i class="fa menu-icon"><img src="Resources/img/Menu_AppPressFieldName.png"></i><span>AppPressDisplayName</span>
+                                </a>
+                                <!--|AppPress.DownloadFunctions.End|-->
+                            </li>
+                            <li class="treeview">
+                                <!--|AppPress.CollapsedSideBar.Begin|-->
+                                <a id='AppPressId' formName='AppPressFieldName' onclick='AppPressOnClick'>
+                                    <i class="fa menu-icon"><img src="Resources/img/Menu_AppPressFieldName.png"></i><span>AppPressDisplayName</span>
+                                </a>
+                                <!--|AppPress.CollapsedSideBar.End|-->
+                            </li>
+                            <li class="treeview">
+                                <!--|AppPress.Miscellaneous.Begin|-->
+                                <a id='AppPressId' formName='AppPressFieldName' onclick='AppPressOnClick'>
+                                    <i class="fa menu-icon"><img src="Resources/img/Menu_AppPressFieldName.png"></i><span>AppPressDisplayName</span>
+                                </a>
+                                <!--|AppPress.Miscellaneous.End|-->
+                            </li>
+                            <li class="treeview">
+                                <!--|AppPress.OtherFunctions.Begin|-->
+                                <a id='AppPressId' formName='AppPressFieldName' onclick='AppPressOnClick'>
+                                    <i class="fa menu-icon"><img src="Resources/img/Menu_AppPressFieldName.png"></i><span>AppPressDisplayName</span>
+                                </a>
+                                <!--|AppPress.OtherFunctions.End|-->
+                            </li>
+                            <li class="treeview">
+                                <!--|AppPress.UserControls.Begin|-->
+                                <a id='AppPressId' formName='AppPressFieldName' onclick='AppPressOnClick'>
+                                    <i class="fa menu-icon"><img src="Resources/img/Menu_AppPressFieldName.png"></i><span>AppPressDisplayName</span>
+                                </a>
+                                <!--|AppPress.UserControls.End|-->
+                            </li>
+                        </ul>
+                    </li>
+                    <!--Demo Skin End-->
+                    <li class="treeview">
+                        <!--|AppPress.AdminMenu.Begin|-->
+                        <a href="#">
+                            <i class="fa fa-dashboard"></i> <span>ADMIN</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <!--|AppPress.AdminMenu.End|-->
+                        <ul class="treeview-menu">
+                            <li class="treeview">
+                                <!--|AppPress.UserManagement.Begin|-->
+                                <a id='AppPressId' formName='AppPressFieldName' onclick='AppPressOnClick'>
+                                    <i class="fa menu-icon"><img src="Resources/img/Menu_AppPressFieldName.png"></i><span>AppPressDisplayName</span>
+                                </a>
+                                <!--|AppPress.UserManagement.End|-->
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+        </aside>
+        <div class="content-wrapper" style="min-height: 1126px;">
+            <div id="contentPage" class="content">
+                <!--|AppPress.ContentUrl|-->
+                <!--|AppPress.MasterContentArea.Begin|-->
+                <div id='AppPressContainerId'>
+                    <span id='AppPressErrorId'></span><!--|AppPress.MasterContentArea.RowBegin|--><!--|AppPress.MasterContentArea.RowEnd|-->
+                </div>
+                <!--|AppPress.MasterContentArea.End|-->
+            </div>
+        </div>
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> 2.0.1
+            </div>
+            <strong>Copyright © 2012-2016 <a href="http://apppress.in" target="_blank">AppPress</a>.</strong> All rights reserved.
+        </footer>
+    </div>
+    <span class="scrollToTop" style="display:none"><a href="#"><i class="fa fa-chevron-up"></i></a></span>
+    <script src="AdminLTETemplate/dist/js/app.js?t=<!--@AppPress.startTime@-->" type="text/javascript"></script>
+</body>
+</html>

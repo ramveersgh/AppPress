@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- To Enable Intellisense for this Document in Visual Studio goto
+Tools->Options->Text Editor->XML->Miscellaneous
+and Check Automatically Download DTDs and schemas
+-->
+<Forms
+    xmlns="AppPress"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="AppPress http://www.sysmates.com/AppPress.1.00.xsd ">
+
+  <Form Name="UIElements">
+    <MasterFormName>Master</MasterFormName>
+    <Fields>
+      <HTML Name="Help">
+        <CSSClass>pull-right</CSSClass>
+      </HTML>
+      <Button Name="Save">
+        <CSSClass>pull-right</CSSClass>
+      </Button>
+      <FormContainerGrid Name="Fields">
+        <TableName>demo.UIElements</TableName>
+        <RowFields>
+          <Pickone Name="FieldType">
+            <SubmitIfStatic/>
+          </Pickone>
+          <FormContainerDynamic Name="Field">
+          </FormContainerDynamic>
+        </RowFields>
+      </FormContainerGrid>
+    </Fields>
+  </Form>
+
+  <Form Name="Text">
+    <Fields>
+      <HTML Name="Help">
+        <CSSClass>pull-right</CSSClass>
+      </HTML>
+      <Text Name="Text">
+      </Text>
+      <Text Name="TextWithValidation">
+        <MaxChars>25</MaxChars>
+        <MinChars>3</MinChars>
+        <Style>TitleCase</Style>
+        <RegexValidation><![CDATA[^[a-zA-Z]+$]]></RegexValidation>
+      </Text>
+    </Fields>
+  </Form>
+
+  <Form Name="TextArea">
+    <TableName>demo.UIElements.TextArea</TableName>
+    <Fields>
+      <HTML Name="Help">
+        <CSSClass>pull-right</CSSClass>
+      </HTML>
+      <ForeignKey Name="UIElementsId"/>
+      <TextArea Name="TextArea">
+      </TextArea>
+      <TextArea Name="TextAreaRich">
+        <Style>RichTextCKEditorBasic</Style>
+      </TextArea>
+    </Fields>
+  </Form>
+
+  <Form Name="Checkbox">
+    <Fields>
+      <HTML Name="Help">
+        <CSSClass>pull-right</CSSClass>
+      </HTML>
+      <Checkbox Name="Checkbox">
+      </Checkbox>
+    </Fields>
+  </Form>
+
+  <Form Name="PickMultiple">
+    <TableName>demo.UIElements.PickMultiple</TableName>
+    <Fields>
+      <ForeignKey Name="UIElementsId"/>
+      <HTML Name="Help">
+        <CSSClass>pull-right</CSSClass>
+      </HTML>
+      <PickMultiple Name="PickMultipleCheckbox">
+        <Style>Checkboxes</Style>
+        <!--To get options-->
+        <TableName>demo.lookup.pickvalues</TableName>
+        <!--To Save Values, PickMultipleId is Foreignkey to Table of Form (demo.UIElements.PickMultiple)-->
+        <SaveTableName>demo.UIElements.PickMultiple.PickMultipleCheckbox</SaveTableName>
+        <SaveTableForeignKey>PickMultipleId</SaveTableForeignKey>
+      </PickMultiple>
+      <PickMultiple Name="PickMultiple">
+        <Style>DropDown</Style>
+        <TableName>demo.lookup.pickvalues</TableName>
+      </PickMultiple>
+    </Fields>
+  </Form>
+
+  <Form Name="DateRange">
+    <Fields>
+      <HTML Name="Help">
+        <CSSClass>pull-right</CSSClass>
+      </HTML>
+      <DateRange Name="DateRange">
+      </DateRange>
+    </Fields>
+  </Form>
+
+  <Form Name="DateTime">
+    <Fields>
+      <HTML Name="Help">
+        <CSSClass>pull-right</CSSClass>
+      </HTML>
+      <DateTime Name="DateTime">
+      </DateTime>
+    </Fields>
+  </Form>
+
+  <Form Name="HTML">
+    <Fields>
+      <HTML Name="Help">
+        <CSSClass>pull-right</CSSClass>
+      </HTML>
+      <HTML Name="HTML">
+      </HTML>
+    </Fields>
+  </Form>
+
+  <Form Name="Button">
+    <Fields>
+      <HTML Name="Help">
+        <CSSClass>pull-right</CSSClass>
+      </HTML>
+      <Button Name="Button">
+      </Button>
+      <Button Name="Link">
+        <Style>Link</Style>
+      </Button>
+    </Fields>
+  </Form>
+
+  <Form Name="FileUpload">
+    <Fields>
+      <HTML Name="Help">
+        <CSSClass>pull-right</CSSClass>
+      </HTML>
+      <FileUpload Name="FileUpload">
+      </FileUpload>
+    </Fields>
+  </Form>
+
+  <Form Name="MultiFileUpload">
+    <TableName>demo.UIElements.MultiFileUpload</TableName>
+    <Fields>
+      <HTML Name="Help">
+        <CSSClass>pull-right</CSSClass>
+      </HTML>
+      <ForeignKey Name="UIElementsId"></ForeignKey>
+      <MultiFileUpload Name="MultiFileUpload">
+        <AutoUpload/>
+        <SaveTableName>demo.UIElements.MultiFileUpload.MultiFileUpload</SaveTableName>
+        <SaveTableForeignKey>UIElementsMultiFileUploadId</SaveTableForeignKey>
+      </MultiFileUpload>
+    </Fields>
+  </Form>
+
+  <Form Name="Number">
+    <Fields>
+      <HTML Name="Help">
+        <CSSClass>pull-right</CSSClass>
+      </HTML>
+      <Number Name="Number">
+        <MinimumValue>100</MinimumValue>
+        <MaximumValue>1000</MaximumValue>
+      </Number>
+    </Fields>
+  </Form>
+
+  <Form Name="Pickone">
+    <TableName>demo.uielements.Pickone</TableName>
+    <Fields>
+      <HTML Name="Help">
+        <CSSClass>pull-right</CSSClass>
+      </HTML>
+      <ForeignKey Name="UIElementId"></ForeignKey>
+      <Pickone Name="Pickone">
+      </Pickone>
+      <Pickone Name="PickoneRadio">
+        <TableName>demo.lookup.pickvalues</TableName>
+        <Style>Radio</Style>
+      </Pickone>
+      <Pickone Name="PickoneAutoComplete">
+        <Style>AutoComplete</Style>
+      </Pickone>
+    </Fields>
+  </Form>
+
+</Forms>

@@ -1,0 +1,126 @@
+﻿<div class='box box-none'>
+    <div class='form-horizontal'>
+        <div class='box-body'>
+            <div id='AppPressFormErrorId' class='callout callout-danger'></div>
+            <!--|AppPress.Employees.Begin|-->
+            <div id='AppPressContainerId' style="AppPressControlStyle" class="AppPressFormContainerGrid FormContainerDynamic">
+                <div>
+                    <span class='help-block has-success' id='AppPressHelpId'></span><span class='help-block has-error' id='AppPressErrorId'></span>
+                    <!-- Skin Change: Added TableScroll Class -->
+                    <table id='FormContainerTable' class='table tbl_valign_top TableScroll'>
+                        <caption class='tbl_heading'>
+                            <span>AppPressDisplayName</span><span class='AppPressFormContainerFields'>
+                                <!--|AppPress.AddEmployees.Begin|--><span id='AppPressContainerId'><button id="AppPressId" onclick='AppPressOnClick' class="btn btn-primary btn-xs" type="button">AppPressDisplayName</button><span id='AppPressHelpId' class='help-block has-success'></span><span id='AppPressErrorId' class='help-block has-error'></span></span><!--|AppPress.AddEmployees.End|-->
+                                <!--|AppPress.ModifyEmployees.Begin|--><span id='AppPressContainerId'><button id="AppPressId" onclick='AppPressOnClick' class="btn btn-primary btn-xs" type="button">AppPressDisplayName</button><span id='AppPressHelpId' class='help-block has-success'></span><span id='AppPressErrorId' class='help-block has-error'></span></span><!--|AppPress.ModifyEmployees.End|-->
+                                <!--|AppPress.DeleteEmployees.Begin|--><span id='AppPressContainerId'><button id="AppPressId" onclick='AppPressOnClick' class="btn btn-primary btn-xs" type="button">AppPressDisplayName</button><span id='AppPressHelpId' class='help-block has-success'></span><span id='AppPressErrorId' class='help-block has-error'></span></span><!--|AppPress.DeleteEmployees.End|-->
+                            </span>
+                        </caption><!--|AppPress.Employees.HeaderBegin|-->
+                        <thead>
+                            <tr>
+                                <!--|AppPress.SelectRow.Begin|-->
+                                <th id='AppPressColumnId' class='SelectRow AppPressColumnHeader'>AppPressDisplayName</th><!--|AppPress.SelectRow.End|--><!--|AppPress.Photoupload.Begin|-->
+                                <th id='AppPressColumnId' style='min-width:150px;width:150px;max-width:150px;' class='AppPressColumnHeader'></th><!--|AppPress.Photoupload.End|--><!--|AppPress.Name.Begin|-->
+                                <th id='AppPressColumnId' class='AppPressColumnHeader'>
+                                    AppPressDisplayName
+                                    <!--|AppPress.SortableName.Begin|-->
+                                    <div id='AppPressContainerId' class='pull-right'>
+                                        <a id='AppPressId' onclick='AppPressRotateImage(this);AppPressOnChange'>
+                                            <span id='Image_AppPressId'></span>
+                                        </a>
+                                    </div>
+                                    <!--|AppPress.SortableName.End|-->
+                                </th><!--|AppPress.Name.End|--><!--|AppPress.Gender.Begin|-->
+                                <th id='AppPressColumnId' class='AppPressColumnHeader'>
+                                    AppPressDisplayName<!--|AppPress.SortableGender.Begin|-->
+                                    <div id='AppPressContainerId' class='pull-right'>
+                                        <a id='AppPressId' onclick='AppPressRotateImage(this);AppPressOnChange'>
+                                            <span id='Image_AppPressId'></span>
+                                        </a>
+                                    </div>
+                                    <!--|AppPress.SortableGender.End|--><!--|AppPress.RowFilterGender.Begin|--><a href='#' id='FilterButton_AppPressId' onclick="AppPress_GridFilterClick('AppPressContainerId','AppPressId',false)" class='pull-right'><i class='fa fa-filter'></i></a><div id='AppPressContainerId' class='AppPressGridFilter' style='display:none;position:absolute'>
+                                        <div style="AppPressControlStyle" class=''>
+                                            <!--|AppPress.PartBegin|--><div class='checkbox'>
+                                                <label style='AppPressPartStyle' for="AppPressId:AppPressValue">
+                                                    <input type="checkbox" id="AppPressId:AppPressValue" name="AppPressId" value="AppPressValue" onclick='' />
+                                                    AppPressLabel
+                                                </label>
+                                            </div>
+                                            <!--|AppPress.PartEnd|-->
+                                        </div><span id='AppPressHelpId' class='help-block has-success'></span><span id="AppPressErrorId" class='help-block has-error'></span><br /><button class='btn btn-primary btn-xs' onclick="AppPress_GridFilterClick('AppPressContainerId','AppPressId',true)">Close</button><button id='AppPressId' class='btn btn-primary btn-xs pull-right' onclick='AppPressOnChange;AppPress_GridFilterClick("AppPressContainerId","AppPressId",false)'>Apply</button>
+                                    </div><!--|AppPress.RowFilterGender.End|-->
+                                </th><!--|AppPress.Gender.End|--><!--|AppPress.DateOfBirth.Begin|-->
+                                <th id='AppPressColumnId' class='AppPressColumnHeader'>
+                                    AppPressDisplayName<!--|AppPress.SortableDateOfBirth.Begin|-->
+                                    <div id='AppPressContainerId' class='pull-right'>
+                                        <a id='AppPressId' onclick='AppPressRotateImage(this);AppPressOnChange'>
+                                            <span id='Image_AppPressId'></span>
+                                        </a>
+                                    </div>
+                                    <!--|AppPress.SortableDateOfBirth.End|-->
+                                </th><!--|AppPress.DateOfBirth.End|--><!--|AppPress.Age.Begin|-->
+                                <th id='AppPressColumnId' class='AppPressColumnHeader'>
+                                    AppPressDisplayName
+                                    <!--|AppPress.SortableAge.Begin|-->
+                                    <div id='AppPressContainerId' class='pull-right'>
+                                        <a id='AppPressId' onclick='AppPressRotateImage(this);AppPressOnChange'>
+                                            <span id='Image_AppPressId'></span>
+                                        </a>
+                                    </div>
+                                    <!--|AppPress.SortableAge.End|-->
+                                    <!--|AppPress.RowFilterAge.Begin|--><a href='#' id='FilterButton_AppPressId' onclick="AppPress_GridFilterClick('AppPressContainerId','AppPressId',false)" class='pull-right'><i class='fa fa-filter'></i></a><div id='AppPressContainerId' class='AppPressGridFilter' style='display:none;position:absolute'>
+                                        <div style="AppPressControlStyle" class=''>
+                                            <div class='checkbox'><input type='checkbox' id='SelectAll_AppPressId' onclick='CheckUncheckAll(this,"AppPressId")' /></div><!--|AppPress.PartBegin|--><div class='checkbox'>
+                                                <label style='AppPressPartStyle' for="AppPressId:AppPressValue">
+                                                    <input type="checkbox" id="AppPressId:AppPressValue" name="AppPressId" value="AppPressValue" onclick='' />
+                                                    AppPressLabel
+                                                </label>
+                                            </div>
+                                            <!--|AppPress.PartEnd|-->
+                                        </div><span id='AppPressHelpId' class='help-block has-success'></span><span id="AppPressErrorId" class='help-block has-error'></span><br /><button class='btn btn-primary btn-xs' name='AppPress_RowFilter_Cancel' onclick="AppPress_GridFilterClick('AppPressContainerId','AppPressId',true)">Cancel</button><button id='AppPressId' name='AppPress_RowFilter_Apply' class='btn btn-primary btn-xs pull-right' onclick='AppPressOnChange;AppPress_GridFilterClick("AppPressContainerId","AppPressId",false)'>Apply</button>
+                                    </div><!--|AppPress.RowFilterAge.End|-->
+                                </th><!--|AppPress.Age.End|-->
+                            </tr>
+                        </thead>
+                        <!--|AppPress.Employees.HeaderEnd|-->
+                        <!-- Skin Change: Added Script to set Height of tbody to relative to window Height, Added id to tbody -->
+                        <!--|ScriptBegin|-->
+                        $(JQueryEscape('#tbody_AppPressContainerId')).css('max-height',$(window).height()-$(JQueryEscape('#AppPressContainerId')).offset().top-100);
+                        <!--|ScriptEnd|-->
+                        <tbody id='tbody_AppPressContainerId'>
+                            <!--|AppPress.Employees.RowBegin|-->
+                            <tr>
+                                <!--|AppPress.SelectRow.Begin|-->
+                                <td id='AppPressContainerId'>
+                                    <input type='checkbox' id='AppPressId' onclick='AppPressOnClick' AppPressValue />
+                                </td><!--|AppPress.SelectRow.End|-->
+                                <!--|AppPress.Photoupload.Begin|-->
+                                <td id='AppPressContainerId'>
+                                    <!-- Skin Change: Used AppPressFileUploadDownloadUrl as Image URL -->
+                                    <!--|AppPress.FileUpload.FileNamePartBegin|--><img src="AppPressFileUploadDownloadUrl" style="width:50px" /><!--|AppPress.FileUpload.FileNamePartEnd|-->
+                                    <!-- Skin Change: End -->
+                                </td><!--|AppPress.Photoupload.End|-->
+                                <!--|AppPress.Name.Begin|-->
+                                <td id='AppPressContainerId'>
+                                    <span style="AppPressControlStyle">AppPressValue</span>
+                                </td><!--|AppPress.Name.End|-->
+                                <!--|AppPress.Gender.Begin|-->
+                                <td id='AppPressContainerId'>
+                                    <span style="AppPressControlStyle">AppPressValue</span>
+                                </td><!--|AppPress.Gender.End|-->
+                                <!--|AppPress.DateOfBirth.Begin|-->
+                                <td id='AppPressContainerId'>
+                                    <span style="AppPressControlStyle">AppPressValue</span>
+                                </td><!--|AppPress.DateOfBirth.End|-->
+                                <!--|AppPress.Age.Begin|-->
+                                <td id='AppPressContainerId'>
+                                    <span style="AppPressControlStyle;float:right;">AppPressValue</span>
+                                </td><!--|AppPress.Age.End|-->
+                            </tr><!--|AppPress.Employees.RowEnd|-->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!--|AppPress.Employees.End|-->
+        </div>
+    </div>
+</div>

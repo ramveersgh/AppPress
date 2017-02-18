@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- To Enable Intellisense for this Document in Visual Studio goto
+Tools->Options->Text Editor->XML->Miscellaneous
+and Check Automatically Download DTDs and schemas
+-->
+<Forms
+    xmlns="AppPress"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="AppPress http://www.sysmates.com/AppPress.1.00.xsd ">
+
+  <Form Name="OtherFunctions">
+    <MasterFormName>Master</MasterFormName>
+    <Fields>
+      <Button Name="AlertMessage"></Button>
+      <Button Name="PromptClient">
+        <Help><![CDATA[To get conformation from user from anywhere in logic]]></Help>
+      </Button>
+      <Text Name="Email">
+        <Required></Required>
+        <EmailValidation></EmailValidation>
+      </Text>
+      <Button Name="SendEmail">
+        <Shortcut><![CDATA[Ctrl+S]]></Shortcut>
+      </Button>
+    </Fields>
+  </Form>
+
+</Forms>

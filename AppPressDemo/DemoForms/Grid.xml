@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- To Enable Intellisense for this Document in Visual Studio goto
+Tools->Options->Text Editor->XML->Miscellaneous
+and Check Automatically Download DTDs and schemas
+-->
+<Forms
+    xmlns="AppPress"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="AppPress http://www.sysmates.com/AppPress.1.00.xsd ">
+
+  <Form Name="Grid">
+    <MasterFormName>Master</MasterFormName>
+    <Fields>
+      <FormContainerGrid Name="Grid">
+        <TableName>demo.formcontainerdata</TableName>
+        <RowFields>
+          <SelectRow></SelectRow>
+          <Pickone Name="Animal"></Pickone>
+          <Text Name="Count"></Text>
+          <TextArea Name="Remark"></TextArea>
+        </RowFields>
+        <PopupFields>
+          <Pickone Name="Animal"></Pickone>
+          <Number Name="Count"></Number>
+          <TextArea Name="Remark"></TextArea>
+        </PopupFields>
+      </FormContainerGrid>
+      <FormContainerGrid Name="GridMultiSelect">
+        <TableName>demo.FormContainerData</TableName>
+        <RowFields>
+          <SelectRow>
+            <AllowMultiSelect/>
+          </SelectRow>
+          <Pickone Name="Animal">
+            <SubmitIfStatic></SubmitIfStatic>
+          </Pickone>
+          <Text Name="Count"></Text>
+          <TextArea Name="Remark"></TextArea>
+        </RowFields>
+        <ContainerFields>
+          <Button Name="MultipleModify"></Button>
+        </ContainerFields>
+      </FormContainerGrid>
+      <FormContainerGrid Name="GridUserControlledMultiSelect">
+        <TableName>demo.formcontainerdata</TableName>
+        <RowFields>
+          <SelectRow>
+            <AllowMultiSelect/>
+          </SelectRow>
+          <Pickone Name="Animal">
+          </Pickone>
+          <Text Name="Count"></Text>
+          <TextArea Name="Remark"></TextArea>
+        </RowFields>
+        <PopupFields>
+          <Pickone Name="Animal"></Pickone>
+          <Number Name="Count"></Number>
+          <TextArea Name="Remark"></TextArea>
+        </PopupFields>
+        <ContainerFields>
+          <Checkbox Name="AllowMultiSelect"></Checkbox>
+        </ContainerFields>
+      </FormContainerGrid>
+      <FormContainerGrid Name="NestedGrid">
+        <TableName>demo.formcontainerdata</TableName>
+        <RowFields>
+          <SelectRow></SelectRow>
+          <Pickone Name="Animal"></Pickone>
+          <Text Name="Count"></Text>
+          <TextArea Name="Remark"></TextArea>
+          <FormContainerGrid Name="FeedConsumptionCurrentWeek">
+            <RowFields>
+              <DateTime Name="Date"></DateTime>
+              <Number Name="Weight"></Number>
+            </RowFields>
+          </FormContainerGrid>
+        </RowFields>
+        <PopupFields>
+          <Pickone Name="Animal"></Pickone>
+          <Number Name="Count"></Number>
+          <TextArea Name="Remark"></TextArea>
+          <FormContainerGrid Name="FeedConsumptionCurrentWeek">
+            <TableName>demo.feedconsumption</TableName>
+            <RowFields>
+              <DateTime Name="Date">
+              </DateTime>
+              <Number Name="Weight">
+                <NonStatic/>
+              </Number>
+            </RowFields>
+          </FormContainerGrid>
+        </PopupFields>
+      </FormContainerGrid>
+      <FormContainerGrid Name="GridWithHiddenColumnAndTotalRow">
+        <RowFields>
+          <HTML Name="Animal"></HTML>
+          <Number Name="Count"></Number>
+          <TextArea Name="Remark"></TextArea>
+        </RowFields>
+        <ContainerFields>
+          <Button Name="HideRemarkColumn"></Button>
+        </ContainerFields>
+        <PopupFields>
+          <Pickone Name="Animal"></Pickone>
+          <Number Name="Count"></Number>
+          <TextArea Name="Remark"></TextArea>
+        </PopupFields>
+        <ContainerFields>
+          <Button Name="DownloadGridAsCSV"></Button>
+        </ContainerFields>
+      </FormContainerGrid>
+    </Fields>
+  </Form>
+
+  <Form Name="MultipleModify">
+    <Fields>
+      <Text Name="Animals">
+        <Static></Static>
+      </Text>
+      <Number Name="Count"></Number>
+      <Button Name="Save"></Button>
+    </Fields>
+  </Form>
+</Forms>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- To Enable Intellisense for this Document in Visual Studio goto
+Tools->Options->Text Editor->XML->Miscellaneous
+and Check Automatically Download DTDs and schemas
+-->
+<Forms
+    xmlns="AppPress"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="AppPress http://www.sysmates.com/AppPress.1.00.xsd ">
+
+  <Form Name="GridVariableColumns">
+    <MasterFormName>Master</MasterFormName>
+    <Fields>
+      <FormContainerGrid Name="AnimalFarm">
+        <Label>AnimalFarm (%Count%)</Label>
+        <TableName>demo.formcontainerdata</TableName>
+        <RowFields>
+          <SelectRow></SelectRow>
+          <Pickone Name="Animal"></Pickone>
+          <Number Name="Count"></Number>
+          <TextArea Name="Remark"></TextArea>
+          <FormContainerGrid Name="FeedConsumptionCurrentWeek">
+            <RowFields>
+              <DateTime Name="Date"></DateTime>
+              <Number Name="Weight"></Number>
+            </RowFields>
+          </FormContainerGrid>
+        </RowFields>
+        <PopupFields>
+          <Pickone Name="Animal"></Pickone>
+          <Number Name="Count"></Number>
+          <TextArea Name="Remark"></TextArea>
+          <FormContainerGrid Name="FeedConsumptionCurrentWeek">
+            <TableName>demo.feedconsumption</TableName>
+            <RowFields>
+              <DateTime Name="Date">
+              </DateTime>
+              <Number Name="Weight">
+                <NonStatic/>
+              </Number>
+            </RowFields>
+          </FormContainerGrid>
+        </PopupFields>
+      </FormContainerGrid>
+    </Fields>
+  </Form>
+
+</Forms>

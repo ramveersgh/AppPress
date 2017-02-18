@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- To Enable Intellisense for this Document in Visual Studio goto
+Tools->Options->Text Editor->XML->Miscellaneous
+and Check Automatically Download DTDs and schemas
+-->
+<Forms
+    xmlns="AppPress"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="AppPress http://www.sysmates.com/AppPress.1.00.xsd ">
+
+  <MasterForm Name="Master">
+    <Fields>
+      <HTML Name="AppAnalytics"></HTML>
+      <Button Name="Signout" >
+        <Style>Button</Style>
+        <NoSubmit/>
+      </Button>
+      <FormContainerDynamic Name="MasterContentArea" >
+      </FormContainerDynamic>
+      <Text Name="EmployeeEmail" >
+        <Static />
+      </Text>
+      <Text Name="EmployeeName" >
+        <Static />
+      </Text>
+      <Text Name="EmployeeImgUrl" >
+        <Static />
+      </Text>
+      <Text Name="ProductIcon">
+        <Static/>
+      </Text>
+      <Text Name="ProductName">
+        <Static/>
+      </Text>
+      <Text Name="ProductLogo">
+        <Static/>
+      </Text>
+      <Text Name="ProductURL">
+        <Static/>
+      </Text>
+      <HTML Name="Title" >
+      </HTML>
+    </Fields>
+    <Fields Group="GeneralMenu">
+      <Redirect Name="Dashboard"></Redirect>
+    </Fields>
+    <Fields Group="DemoMenu">
+      <Redirect Name="UIElements"></Redirect>
+      <Redirect Name="Grid"></Redirect>
+      <Redirect Name="GridVariableColumns"></Redirect>
+      <Redirect Name="GridFixedHeaders"></Redirect>
+      <Redirect Name="FormContainerDynamic"></Redirect>
+      <Redirect Name="AutoBinding"></Redirect>
+      <Redirect Name="DynamicForms"></Redirect>
+      <Redirect Name="NavigationFunctions"></Redirect>
+      <Redirect Name="DownloadFunctions"></Redirect>
+      <Redirect Name="CollapsedSideBar"></Redirect>
+      <Redirect Name="OtherFunctions"></Redirect>
+      <Redirect Name="Miscellaneous"></Redirect>
+      <Button Name="UserControls"></Button>
+    </Fields>
+    <Fields Group="AdminMenu">
+      <Redirect Name="UserManagement"></Redirect>
+    </Fields>
+  </MasterForm>
+
+  <MasterForm Name="NonSecureMaster">
+    <Fields>
+      <FormContainerDynamic Name="MasterContentArea" >
+      </FormContainerDynamic>
+      <Text Name="Title" >
+        <Static />
+      </Text>
+      <Text Name="BoxStyle">
+        <Static />
+      </Text>
+      <Text Name="CompanyLogo">
+        <Static/>
+      </Text>
+      <Text Name="ProductLogo">
+        <Static/>
+      </Text>
+    </Fields>
+  </MasterForm>
+  <Form Name="ContactUs">
+    <Fields>
+      <HTML Name="Address">
+        <Label></Label>
+      </HTML>
+      <Text Name="YourName">
+        <Required/>
+      </Text>
+      <Text Name="YourCompany">
+        <Required/>
+      </Text>
+      <Text Name="YourEmail">
+        <Required/>
+      </Text>
+      <Text Name="CurrentHRISSystem">
+      </Text>
+      <Text Name="CurrentPayrollSystem">
+      </Text>
+      <TextArea Name="Message">
+      </TextArea>
+      <Button Name="SendMessage">
+      </Button>
+    </Fields>
+  </Form>
+  
+<Form Name="ErrorForm">
+    <MasterFormName>Master</MasterFormName>
+    <Fields>
+      <HTML Name="Message" >
+      </HTML>
+    </Fields>
+  </Form>
+  <Form Name="BlankMasterErrorForm">
+    <MasterFormName>NonSecureMaster</MasterFormName>
+    <NonSecure/>
+    <Fields>
+      <HTML Name="Message" >
+      </HTML>
+    </Fields>
+  </Form>
+</Forms>

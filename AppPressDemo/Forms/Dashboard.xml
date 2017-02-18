@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- To Enable Intellisense for this Document in Visual Studio goto
+Tools->Options->Text Editor->XML->Miscellaneous
+and Check Automatically Download DTDs and schemas
+-->
+<Forms
+    xmlns="AppPress"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="AppPress http://www.sysmates.com/AppPress.1.00.xsd ">
+
+  <Form Name="Dashboard">
+    <MasterFormName>Master</MasterFormName>
+    <Fields>
+      <Text Name="Help">
+        <Static/>
+      </Text>
+      <HTML Name="Description">
+      </HTML>
+      <Number Name="Logins">
+        <Static/>
+      </Number>
+      <FormContainerGrid Name="HeadCountByGender" >
+        <RowFields>
+          <Text Name="Id" ></Text>
+          <Text Name="Gender" ></Text>
+          <Text Name="HeadCount" ></Text>
+        </RowFields>
+        <ContainerFields>
+          <!-- To Hold Val of Clicked Column -->
+          <Text Name="Gender">
+            <Hidden/>
+          </Text>
+          <Button Name="GenderDetails"></Button>
+        </ContainerFields>
+      </FormContainerGrid>
+      <FormContainerGrid Name="AccordianSample">
+        <TableName>demo.FormContainerData</TableName>
+        <RowFields>
+          <Pickone Name="Animal"></Pickone>
+          <Number Name="Count"></Number>
+          <TextArea Name="Remark"></TextArea>
+        </RowFields>
+      </FormContainerGrid>
+    </Fields>
+  </Form>
+</Forms>

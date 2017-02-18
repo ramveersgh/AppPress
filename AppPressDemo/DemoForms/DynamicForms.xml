@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- To Enable Intellisense for this Document in Visual Studio goto
+Tools->Options->Text Editor->XML->Miscellaneous
+and Check Automatically Download DTDs and schemas
+-->
+<Forms
+    xmlns="AppPress"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="AppPress http://www.sysmates.com/AppPress.1.00.xsd ">
+
+  <Form Name="DynamicForm">
+    <MasterFormName>Master</MasterFormName>
+    <Fields>
+      <Text Name="ReplaceWithDynamicFields"></Text>
+      <Button Name="Save"></Button>
+    </Fields>
+  </Form>
+
+  <Form Name="DynamicForms">
+    <MasterFormName>Master</MasterFormName>
+    <Fields>
+      <HTML Name="Description" >
+      </HTML>
+      <FormContainerGrid Name="DynamicForms" >
+        <TableName>demo.DynamicForms</TableName>
+        <RowFields>
+          <SelectRow/>
+          <Text Name="FormName"></Text>
+          <FormContainerGrid Name="Fields" >
+            <TableName>demo.DynamicForms.Fields</TableName>
+            <RowFields>
+              <SelectRow/>
+              <ForeignKey Name="FormId"/>
+              <Pickone Name="FieldType" >
+              </Pickone>
+              <Text Name="FieldName"></Text>
+            </RowFields>
+            <PopupFields>
+              <ForeignKey Name="FormId"/>
+              <Pickone Name="FieldType">
+              </Pickone>
+              <Text Name="FieldName">
+                <Help><![CDATA[Only Alphanumeric characters]]></Help>
+                <RegexValidation><![CDATA[^[a-zA-Z][a-zA-Z0-9]+$]]></RegexValidation>
+              </Text>
+            </PopupFields>
+          </FormContainerGrid>
+        </RowFields>
+        <PopupFields>
+          <Text Name="FormName"></Text>
+        </PopupFields>
+        <ContainerFields>
+          <Button Name="Test"></Button>
+        </ContainerFields>
+      </FormContainerGrid>
+    </Fields>
+  </Form>
+
+</Forms>

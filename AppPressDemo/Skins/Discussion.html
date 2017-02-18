@@ -1,0 +1,72 @@
+﻿<div class="box box-danger direct-chat direct-chat-primary" id="AppPressContainerId">
+    <div class="box-header with-border" style="height:90px;overflow-y:auto">
+        <h3 class="box-title"></h3>
+        <!--|AppPress.Participants.Begin|-->
+        <div class="box-tools pull-right">
+            <!--|AppPress.Participants.RowBegin|-->
+            <div class="btn btn-box-tool" data-toggle="tooltip" title="Participants" style="float:right;line-height:1" data-widget="chat-pane-toggle">
+                <!--|AppPress.Photo.Begin|-->
+                <img class="direct-chat-img" src="AppPressValue" style="float:none">
+                <!--|AppPress.Photo.End|-->
+                <br />
+                <!--|AppPress.Name.Begin|-->
+                <span style="font-size:10px">AppPressValue</span>
+                <!--|AppPress.Name.End|-->
+                <br />
+                <!--|AppPress.Level.Begin|-->
+                <span style="font-size:10px">AppPressValue</span>
+                <!--|AppPress.Level.End|-->
+            </div>
+            <!--|AppPress.Participants.RowEnd|-->
+        </div>
+        <!--|AppPress.Participants.End|-->
+    </div>
+    <!-- /.box-header -->
+    <!--|AppPress.Discussion.Begin|-->
+    <div class="box-body" id="AppPressContainerId">
+        <!-- Conversations are loaded here -->
+        <div class="direct-chat-messages" id="body_AppPressContainerId" style="overflow-x:hidden">
+            <!-- Message. Default to the left -->
+            <!--|AppPress.Discussion.RowBegin|-->
+            <div class="direct-chat-msg <!--|AppPress.Direction.Begin|-->AppPressValue<!--|AppPress.Direction.End|-->">
+                <div class="direct-chat-info clearfix">
+                    <span class="direct-chat-name pull-<!--|AppPress.Direction.Begin|-->AppPressValue<!--|AppPress.Direction.End|-->"><!--|AppPress.By.Begin|-->AppPressValue<!--|AppPress.By.End|--></span>
+                    <span class="direct-chat-timestamp pull-<!--|AppPress.OtherDirection.Begin|-->AppPressValue<!--|AppPress.OtherDirection.End|-->"><!--|AppPress.On.Begin|-->AppPressValue<!--|AppPress.On.End|--></span>
+                </div>
+                <!-- /.direct-chat-info -->
+                <!--|AppPress.ByPhoto.Begin|-->
+                <img class="direct-chat-img" src="AppPressValue" alt="Message User Image"><!-- /.direct-chat-img -->
+                <!--|AppPress.ByPhoto.End|-->
+                <div class="direct-chat-text">
+                    <!--|AppPress.Comment.Begin|-->AppPressValue<!--|AppPress.Comment.End|-->
+                </div>
+                <!-- /.direct-chat-text -->
+            </div>
+            <!--|AppPress.Discussion.RowEnd|-->
+            <!-- /.direct-chat-msg -->
+        </div>
+        <!--/.direct-chat-messages-->
+        <!-- Contacts are loaded here -->
+        <!-- /.direct-chat-pane -->
+    </div>
+    <!-- /.box-body -->
+    <!--|ScriptBegin|-->
+    var element = document.getElementById("body_AppPressContainerId");
+    element.scrollTop = element.scrollHeight;
+    <!--|ScriptEnd|-->
+    <!--|AppPress.Discussion.End|-->
+    <div class="box-footer">
+        <div class="input-group">
+            <!--|AppPress.AddText.Begin|-->
+            <textarea id="AppPressId" placeholder="Type Message ..." class="form-control" style="height:34px"></textarea>
+            <!--|AppPress.AddText.End|-->
+            <span class="input-group-btn">
+                <!--|AppPress.AddDiscussion.Begin|-->
+                <button onclick='AppPressOnClick' id="AppPressId" class="btn btn-danger btn-flat" style="font-size:14px">Send</button>
+                <span id='AppPressErrorId'></span>
+                <!--|AppPress.AddDiscussion.End|-->
+            </span>
+        </div>
+    </div>
+    <!-- /.box-footer-->
+</div>

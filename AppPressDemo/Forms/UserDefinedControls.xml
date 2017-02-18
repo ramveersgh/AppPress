@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- To Enable Intellisense for this Document in Visual Studio goto
+Tools->Options->Text Editor->XML->Miscellaneous
+and Check Automatically Download DTDs and schemas
+-->
+<Forms
+    xmlns="AppPress"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="AppPress http://www.sysmates.com/AppPress.1.00.xsd ">
+
+  <UserControlScalarForm Name="GetCurrentEmployeeOptions">
+    <Fields>
+      <Pickone Name="Employees">
+        <Style>AutoComplete</Style>
+        <Placeholder><![CDATA[Type to Select Employee]]></Placeholder>
+      </Pickone>
+    </Fields>
+  </UserControlScalarForm>
+
+  <UserControlScalarForm Name="ChangeHistoryAnchor">
+    <Fields>
+      <Button Name="ChangeHistory"></Button>
+    </Fields>
+  </UserControlScalarForm>
+  
+  <UserControlScalarForm Name="ChangeHistory">
+    <Fields>
+      <HTML Name="ChangeHistory">
+      </HTML>
+    </Fields>
+  </UserControlScalarForm>
+
+ 
+
+
+  <UserControlScalarForm Name="DiscussionAnchor">
+    <Fields>
+      <Button Name="Discussion">
+        <SubmitIfStatic/>
+      </Button>
+    </Fields>
+  </UserControlScalarForm>
+
+  <Form Name="Discussion">
+    <TableName>DiscussionMaster</TableName>
+    <Fields>
+      <FormContainerGrid Name="Participants">
+        <RowFields>
+          <Text Name="Photo"></Text>
+          <Text Name="Name"></Text>
+          <Text Name="Level"></Text>
+        </RowFields>
+      </FormContainerGrid>
+      <FormContainerGrid Name="Discussion" >
+        <TableName>Discussions</TableName>
+        <RowFields>
+          <ForeignKey Name="DiscussionMasterId" ></ForeignKey>
+          <UserControlScalar Name="By" Type="GetCurrentEmployeeOptions">
+          </UserControlScalar>
+          <HTML Name="ByPhoto"></HTML>
+          <DateTime Name="On" >
+            <DateFormat>dd-MMM-yyyy HH:mm</DateFormat>
+          </DateTime>
+          <Text Name="Direction"></Text>
+          <Text Name="OtherDirection"></Text>
+          <TextArea Name="Comment" >
+          </TextArea>
+        </RowFields>
+        <ContainerFields>
+          <Button Name="AddDiscussion">
+          </Button>
+          <TextArea Name="AddText">
+          </TextArea>
+        </ContainerFields>
+      </FormContainerGrid>
+    </Fields>
+  </Form>
+
+</Forms>

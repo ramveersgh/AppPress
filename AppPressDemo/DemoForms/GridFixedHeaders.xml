@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- To Enable Intellisense for this Document in Visual Studio goto
+Tools->Options->Text Editor->XML->Miscellaneous
+and Check Automatically Download DTDs and schemas
+-->
+<Forms
+    xmlns="AppPress"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="AppPress http://www.sysmates.com/AppPress.1.00.xsd ">
+
+  <Form Name="GridFixedHeaders">
+    <MasterFormName>Master</MasterFormName>
+    <Fields>
+      <FormContainerGrid Name="Employees">
+        <Label>Employees (%Count%)</Label>
+        <TableName>application.users</TableName>
+        <RowFields Sortable="true">
+          <SelectRow></SelectRow>
+          <FileUpload Name="Photoupload"/>
+          <Text Name="Name"></Text>
+          <Text Name="Gender">
+            <Filter/>
+          </Text>
+          <DateTime Name="DateOfBirth"></DateTime>
+          <Number Name="Age">
+            <Filter/>
+          </Number>
+        </RowFields>
+        <PopupFields>
+          <Text Name="FirstName"></Text>
+          <Text Name="MiddleName"></Text>
+          <Text Name="LastName"></Text>
+          <Pickone Name="Gender"></Pickone>
+          <DateTime Name="DateOfBirth"></DateTime>
+          <FileUpload Name="Photoupload">
+            <Accept><![CDATA[*.jpg]]></Accept>
+            <MaxFileSizeInKB>500</MaxFileSizeInKB>
+            <AutoUpload/>
+          </FileUpload>
+        </PopupFields>
+      </FormContainerGrid>
+    </Fields>
+  </Form>
+</Forms>

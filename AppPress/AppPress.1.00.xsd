@@ -1,0 +1,1950 @@
+﻿<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="AppPress" xmlns="AppPress" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:documentation>
+      Copyright ©2016 SysMates Technologies Pte. Ltd. All Rights Reserved.
+      Schema for AppPress Form Definition
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:element name="Forms" type="Forms"/>
+
+  <xs:complexType name="Forms">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:sequence>
+        <xs:element name="Form" type="Form" maxOccurs="unbounded" minOccurs="0"/>
+        <xs:element name="MasterForm" type="MasterForm" maxOccurs="unbounded" minOccurs="0"/>
+        <xs:element name="MergedForm" type="MergedForm" maxOccurs="unbounded" minOccurs="0"/>
+        <xs:element name="PluginForm" type="PluginForm" maxOccurs="unbounded" minOccurs="0"/>
+        <xs:element name="UserControlScalarForm" type="UserControlScalarForm" maxOccurs="unbounded" minOccurs="0"/>
+      </xs:sequence>
+    </xs:choice>
+  </xs:complexType>
+
+  <xs:complexType name="Form">
+    <xs:annotation>
+      <xs:documentation>
+        Defines a form. Form has Name, Properties and list of fields.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="MasterFormName" type="NonEmptyString" maxOccurs="1" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>
+              Name of the Master Form.
+              Master form contains template including Header, Menus, Footer and Content Area. Form will be shown in Content Area.
+              By Default AppPress comes with following MasterForms
+              ApplicationMaster: This Master is used form forms which needs a menu like Home Page.
+              BlankMaster: This Master is used for the form do not need a menu like Login.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="TableName" type="TableNameProperty" maxOccurs="1" minOccurs="0">
+        </xs:element>
+        <xs:element name="NonSecure" maxOccurs="1" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>
+              This is used to open the Form without login. For example Login Form.
+            </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+      <xs:element name="Fields" type="Fields" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>
+            Contains list of Fields in the form.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="Name">
+      <xs:annotation>
+        <xs:documentation>
+          Name of the form. Name should be unique across the application.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="MasterForm">
+    <xs:annotation>
+      <xs:documentation>
+        Defines a master form. Master form  has Name, Properties and list of fields. Master forms can be used in MasterFormName property of Form.
+        For Forms loaded from Url this is mandatory.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Fields" type="Fields" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>
+            Contains list of Fields in the form.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="Name">
+      <xs:annotation>
+        <xs:documentation>
+          Name of the form. Name should be unique across the application.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="UserControlScalarForm">
+    <xs:annotation>
+      <xs:documentation>
+        This type of form can have only single field.
+        Fields of Type UserControlScalar and having Type as name of UserControlScalarForm form are replaced with the Field in UserControlScalarForm.
+        Field Properties of MergedForm Field are added to all the fields of UserControlScalarForm.
+        Name of UserControlScalar field is Retained.
+        Skin of UserControlScalar field is Retained. If the Skin of the field has FieldContent Marker. The FieldContent Marker is replaced with skin of UserControlScalarForm field.
+        Skin of Form is ignored.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Fields" type="SingleField" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Contains list of Fields in the form.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="Name">
+      <xs:annotation>
+        <xs:documentation>
+          Name of the form. Name should be unique across the application.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="MergedForm">
+    <xs:annotation>
+      <xs:documentation>
+        Fields of Type MergedForm and having Type as name of MergedForm form are replaced with Fields in MergedForm.
+        Field Properties of MergedForm Field are added to all the fields of MergedForm.
+        Name of MergedForm field is not used.
+        Skin of MergedForm field is replicated. If the Skin of the field has FieldContent Marker. The FieldContent Maarker is replaced with skin of USerControlForm field.
+        Skin of Form is ignored.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Fields" type="Fields" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Contains list of Fields in the form.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="Name">
+      <xs:annotation>
+        <xs:documentation>
+          Name of the form. Name should be unique across the application.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="PluginForm">
+    <xs:annotation>
+      <xs:documentation>
+        Fields of Type MergedForm and having Type as name of MergedForm form are replaced with Fields in MergedForm.
+        Field Properties of MergedForm Field are added to all the fields of MergedForm.
+        Name of MergedForm field is not used.
+        Skin of MergedForm field is replicated. If the Skin of the field has FieldContent Marker. The FieldContent Maarker is replaced with skin of USerControlForm field.
+        Skin of Form is ignored.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="MergedIntoForm" type="MergedIntoFormProperty" minOccurs="1" maxOccurs="unbounded"></xs:element>
+      <xs:element name="Fields" type="Fields" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Contains list of Fields in the form.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="Name">
+      <xs:annotation>
+        <xs:documentation>
+          Name of the form. Name should be unique across the application.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="SingleField">
+    <xs:sequence>
+      <xs:choice minOccurs="1" maxOccurs="1">
+        <xs:element name="Text" type="TextField" maxOccurs="unbounded" minOccurs="0">
+        </xs:element>
+        <xs:element name="DateTime" type="DateTimeField" maxOccurs="unbounded" minOccurs="0">
+        </xs:element>
+        <xs:element name="DateRange" type="DateRangeField" maxOccurs="unbounded" minOccurs="0">
+        </xs:element>
+        <xs:element name="FileUpload" type="FileUploadField" maxOccurs="unbounded" minOccurs="0">
+        </xs:element>
+        <xs:element name="Password" type="PasswordField" maxOccurs="unbounded" minOccurs="0">
+        </xs:element>
+        <xs:element name="TextArea" type="TextAreaField" maxOccurs="unbounded" minOccurs="0">
+        </xs:element>
+        <xs:element name="Checkbox" type="CheckboxField" maxOccurs="unbounded" minOccurs="0">
+        </xs:element>
+        <xs:element name="Pickone" type="PickoneField" maxOccurs="unbounded" minOccurs="0">
+        </xs:element>
+        <xs:element name="PickMultiple" type="PickMultipleField" maxOccurs="unbounded" minOccurs="0">
+        </xs:element>
+        <xs:element name="Number" type="NumberField" maxOccurs="unbounded" minOccurs="0">
+        </xs:element>
+        <xs:element name="HTML" type="HTMLField" maxOccurs="unbounded" minOccurs="0">
+        </xs:element>
+        <xs:element name="Button" type="ButtonField" maxOccurs="unbounded" minOccurs="0">
+        </xs:element>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Fields">
+    <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="SelectRow" type="SelectRowField" maxOccurs="1" minOccurs="0">
+        </xs:element>
+        <xs:element name="Text" type="TextField" maxOccurs="unbounded" minOccurs="0">
+        </xs:element>
+        <xs:element name="DateTime" type="DateTimeField" maxOccurs="unbounded" minOccurs="0">
+        </xs:element>
+        <xs:element name="DateRange" type="DateRangeField" maxOccurs="unbounded" minOccurs="0">
+        </xs:element>
+        <xs:element name="FileUpload" type="FileUploadField" maxOccurs="unbounded" minOccurs="0">
+        </xs:element>
+        <xs:element name="MultiFileUpload" type="MultiFileUploadField" maxOccurs="unbounded" minOccurs="0">
+        </xs:element>
+        <xs:element name="Button" type="ButtonField" maxOccurs="unbounded" minOccurs="0">
+        </xs:element>
+        <xs:element name="Password" type="PasswordField" maxOccurs="unbounded" minOccurs="0">
+        </xs:element>
+        <xs:element name="TextArea" type="TextAreaField" maxOccurs="unbounded" minOccurs="0">
+        </xs:element>
+        <xs:element name="Checkbox" type="CheckboxField" maxOccurs="unbounded" minOccurs="0">
+        </xs:element>
+        <xs:element name="Pickone" type="PickoneField" maxOccurs="unbounded" minOccurs="0">
+        </xs:element>
+        <xs:element name="PickMultiple" type="PickMultipleField" maxOccurs="unbounded" minOccurs="0">
+        </xs:element>
+        <xs:element name="Number" type="NumberField" maxOccurs="unbounded" minOccurs="0">
+        </xs:element>
+        <xs:element name="ForeignKey" type="ForeignKeyField" maxOccurs="unbounded" minOccurs="0">
+        </xs:element>
+        <xs:element name="HTML" type="HTMLField" maxOccurs="unbounded" minOccurs="0">
+        </xs:element>
+        <xs:element name="FormContainerGrid" type="FormContainerGridField" maxOccurs="unbounded" minOccurs="0">
+        </xs:element>
+        <xs:element name="FormContainerDynamic" type="FormContainerDynamicField" maxOccurs="unbounded" minOccurs="0">
+        </xs:element>
+        <xs:element name="Extension" type="ExtensionField" maxOccurs="unbounded" minOccurs="0">
+        </xs:element>
+        <xs:element name="MergedForm" type="MergedFormField" maxOccurs="unbounded" minOccurs="0">
+        </xs:element>
+        <xs:element name="UserControlScalar" type="MergedFormField" maxOccurs="unbounded" minOccurs="0">
+        </xs:element>
+        <xs:element name="EmbeddedForm" type="EmbeddedFormField" maxOccurs="unbounded" minOccurs="0">
+        </xs:element>
+        <xs:element name="Redirect" type="RedirectField" maxOccurs="unbounded" minOccurs="0">
+        </xs:element>
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="Group" type="NonEmptyString">
+      <xs:annotation>
+        <xs:documentation>
+          Group of the Field. This will generate a Enum in the Form Class with name Groups. Use functions in Class GroupHide, GroupReadonly to work with all fields in the group
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="MergedIntoFormProperty">
+    <xs:annotation>
+      <xs:documentation>
+        Provide the destination form where the field of this form will be merged.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="FormName" type="NonEmptyString" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Destination Form Where this field will be merged.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="BeforeFieldName" type="NonEmptyString" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            The form will be merged just before this field. If this is not provided, the form will be merged at end of all fields in the form.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="DoNotSaveInDBProperty">
+    <xs:annotation>
+      <xs:documentation>
+        Field will not be saved in Database when the form containing the field is saved.
+      </xs:documentation>
+    </xs:annotation>
+  </xs:complexType>
+
+  <xs:complexType name="StaticProperty">
+    <xs:annotation>
+      <xs:documentation>
+        Field will be shown as plain text and not editable.
+        Static fields are not submitted and cannot be used in Backend Event Logic Functions OnClick, OnChange.
+        To force the static field to be submitted set the SubmitValue attribute to true.
+        By Default fields in RowFields are marked as Static
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SubmitIfStaticProperty">
+    <xs:annotation>
+      <xs:documentation>
+        The field will be sumbitted and value of the field can be used in Backend Event Logic function.
+      </xs:documentation>
+    </xs:annotation>
+  </xs:complexType>
+
+  <xs:complexType name="NonStaticProperty">
+    <xs:annotation>
+      <xs:documentation>
+        By Default Field in RowFields are marked as Static. To make then NonStatic use this.
+      </xs:documentation>
+    </xs:annotation>
+  </xs:complexType>
+
+  <xs:complexType name="HiddenProperty">
+    <xs:annotation>
+      <xs:documentation>
+        Hidden fields do not appear in UI. But are generated as part of code.
+      </xs:documentation>
+    </xs:annotation>
+  </xs:complexType>
+
+  <xs:complexType name="ShowSelectAllProperty">
+    <xs:annotation>
+      <xs:documentation>
+        Adds Select All Checkbox to Pick Multiple
+      </xs:documentation>
+    </xs:annotation>
+  </xs:complexType>
+
+  <xs:complexType name="RequiredProperty">
+    <xs:annotation>
+      <xs:documentation>
+        Marks the field as Required.
+        On UI Label for the field will be sufficed with red*.
+        Not valid for FormContainerGrid and FormContainerDynamic.
+        If this is not present and form is bound to Table and column is NOT NULL, then required is set internally for the field.
+      </xs:documentation>
+    </xs:annotation>
+  </xs:complexType>
+
+  <xs:simpleType name="MaxCharsProperty">
+    <xs:annotation>
+      <xs:documentation>
+        Maximum number of characters allowed in the field.
+        If this is not specified and the field binds to a column in TableName of form and the field in not Encrypted, then the value will be taken from size of the field in Database.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:int">
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="HelpProperty">
+    <xs:annotation>
+      <xs:documentation>
+        Help to be displayed below the field in help block.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="RegexValidationProperty">
+    <xs:annotation>
+      <xs:documentation>
+        Validates the content of field to be match the specified Regex expression.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="ShortcutProperty">
+    <xs:annotation>
+      <xs:documentation>
+        When the specified Key combination is pressed OnClick of button and OnChange of Text field will be invoked.
+        For details on how to specify the key refer to AppPress Reference Manual (apppress.in), Search for Shortcut.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="NoSubmitProperty">
+    <xs:annotation>
+      <xs:documentation>
+        Other Data on Page will not be submited.
+        If the button action is only to redirect to another form and does not need other data on Page. Set this property on the Button Field
+      </xs:documentation>
+    </xs:annotation>
+  </xs:complexType>
+
+  <xs:complexType name="TableNameProperty">
+    <xs:annotation>
+      <xs:documentation>
+        Table where options for the field will be saved.
+        Table with which the grid will be bound for loading and saving.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="NonEmptyString">
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:annotation>
+    <xs:documentation>
+      Name of Database table associated with the Form. The table must have a primary key with column name as Id.
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:simpleType name="ForeignKeyProperty">
+    <xs:annotation>
+      <xs:documentation>
+        Foreign Key in the TableName using which the saved options for Pick Multiple will be loaded and saved.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="NonEmptyString">
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="LabelStyleProperty">
+    <xs:annotation>
+      <xs:documentation>
+        HTML style of field label. eg. width:100px; color:red
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="NonEmptyString">
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="ControlStyleProperty">
+    <xs:annotation>
+      <xs:documentation>
+        HTML style of field control. eg. width:100px; color:red
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="NonEmptyString">
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="DateFormatProperty">
+    <xs:annotation>
+      <xs:documentation>
+        Format of Date time in .net Date Formatting Style. Eg. dd-mm-yyyy
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="NonEmptyString">
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="SelectRowField">
+    <xs:annotation>
+      <xs:documentation>
+        Shows a Checkbox on UI for selecting Row in FormContainerGrid or FormContainerDynamic
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="Fields">
+        <xs:sequence>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="AllowMultiSelect" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  Allows Selection of Multiple Rows in the FormContainer type field
+                </xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:sequence>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="TextField">
+    <xs:annotation>
+      <xs:documentation>
+        Text Field in which user can enter single line of text.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="Field">
+        <xs:sequence>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Style" maxOccurs="1" minOccurs="0">
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:enumeration value="UpperCase"/>
+                  <xs:enumeration value="LowerCase"/>
+                  <xs:enumeration value="TitleCase"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Encryption" type="EncryptionType" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Required" type="RequiredProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Help" type="HelpProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="DoNotSaveInDB" type="DoNotSaveInDBProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Static" type="StaticProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="NoEncode" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="SubmitIfStatic" type="SubmitIfStaticProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="NonStatic" type="NonStaticProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Hidden" type="HiddenProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="LabelStyle" type="LabelStyleProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="ControlStyle" type="ControlStyleProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="EmailValidation" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  Validates the content of text to be valid email.
+                </xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:sequence>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="RegexValidation" type="RegexValidationProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="MinChars" type="MaxCharsProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="MaxChars" type="MaxCharsProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Placeholder" type="NonEmptyString" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Shortcut" type="ShortcutProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Label" type="xs:string" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  Label for the field. If this node is not present the label is generated using Name of field. Before each capital letter in the Name a space is inserted.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="CSSClass" type="NonEmptyString" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  CSS Class for the field.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Filter" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  Shows a button on column header. Click on button shows distinct values in the column. User can select one or more values and grid will show ony those values.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Sortable" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  Shows a icon on column header. Click on button sorts the grid.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:choice>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="FileUploadField">
+    <xs:annotation>
+      <xs:documentation>
+        Control which allows files to be uploaded and used in backend logic. The file is saved in Application_Files table and id of row is send in val field.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="Field">
+        <xs:sequence>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Encryption" type="EncryptionType" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="NonSecure" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  File can be accessed with url without logged in session. Useful for logo images etc.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Required" type="RequiredProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Help" type="HelpProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="DoNotSaveInDB" type="DoNotSaveInDBProperty" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  The uploaded file will be saved in temp folder. The full path will be set in Value. If DoNotSaveInDB is not used then uploaded file will be saved in Application_File table and id of the row will be set in Value
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Static" type="StaticProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="SubmitIfStatic" type="SubmitIfStaticProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="NonStatic" type="NonStaticProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Hidden" type="HiddenProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="LabelStyle" type="LabelStyleProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="AutoUpload" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  The upload will start as soon as file is selected. Otherwise upload will start on Click on Upload Button.
+                </xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:sequence>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="SaveOnUpload" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  The Field will be updated in Database on Upload
+                </xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:sequence>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="Accept">
+              <xs:annotation>
+                <xs:documentation>
+                  Types of files that can be uploaded. The syntax is same as that specified for html input type File.
+                  Example 1: .jpg,jpeg,.png
+                  Example 2: audio/*,video/*,image/*
+                </xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:simpleContent>
+                  <xs:extension base="NonEmptyString">
+                    <xs:attribute name="ValidateOnServer" type="xs:boolean">
+                      <xs:annotation>
+                        <xs:documentation>
+                          The uploaded file will be validated for type on server against the File types in Accept
+                        </xs:documentation>
+                      </xs:annotation>
+                    </xs:attribute>
+                  </xs:extension>
+                </xs:simpleContent>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="Storage" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  Defines how the uploaded file will be saved.
+                </xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Directory" type="NonEmptyString" maxOccurs="1" minOccurs="0">
+                    <xs:annotation>
+                      <xs:documentation>
+                        Path of Directory on Server System where uploaded files will be saved. Valid only if Type is Directory.
+                        If Path starts with ~, ~ is replaced with Folder containing the Index.aspx file
+                        or
+                        Name of Amazon S3 Bucket
+                      </xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                </xs:sequence>
+                <xs:attribute name="Type">
+                  <xs:annotation>
+                    <xs:documentation>
+                      Where to store uploaded files.
+                      Database: in Application_Files table.
+                      Directory: in specified Directory on the Server machine.
+                    </xs:documentation>
+                  </xs:annotation>
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:enumeration value="Database"/>
+                      <xs:enumeration value="Directory"/>
+                      <xs:enumeration value="AmazonS3"/>
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:attribute>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="MaxFileSizeInKB" type="xs:int" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  Maximum File size allowed to be uploaded for this field in Kilo Bytes. Default is 5MB.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Label" type="xs:string" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  Label for the field. If this node is not present the label is generated using Name of field. Before each capital letter in the Name a space is inserted.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="CSSClass" type="NonEmptyString" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  CSS Class for the field.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Filter" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  Shows a button on column header. Click on button shows distinct values in the column. User can select one or more values and grid will show ony those values.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:choice>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="MultiFileUploadField">
+    <xs:annotation>
+      <xs:documentation>
+        Control to allow upload and management of Multiple files.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="FileUploadField">
+        <xs:sequence>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="SaveTableName" type="NonEmptyString" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  Name of table where the files will be saved.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="SaveTableForeignKey" type="NonEmptyString" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  ForeignKey in above table to the Table of the form containing the MultiFile upload field
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:choice>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="DateTimeField">
+    <xs:annotation>
+      <xs:documentation>
+        Field where user can enter Date, Date and Time.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="Field">
+        <xs:sequence>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Encryption" type="EncryptionType" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Required" type="RequiredProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Help" type="HelpProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="DoNotSaveInDB" type="DoNotSaveInDBProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Static" type="StaticProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="SubmitIfStatic" type="SubmitIfStaticProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="NonStatic" type="NonStaticProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Hidden" type="HiddenProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="LabelStyle" type="LabelStyleProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="ControlStyle" type="ControlStyleProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="DateFormat" type="DateFormatProperty" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  Format of the Date to be used when date is displayed as Static. The format is in .net date format
+                  When Date is editable AppPress uses Date Formats specified in Settings parameter of InitAppPress.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Style">
+              <xs:complexType>
+                <xs:simpleContent>
+                  <xs:extension base="DateTimeStyles">
+                    <xs:attribute name="TimeFormat" type="TimeFormatTypes">
+                    </xs:attribute>
+                  </xs:extension>
+                </xs:simpleContent>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="Label" type="xs:string" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  Label for the field. If this node is not present the label is generated using Name of field. Before each capital letter in the Name a space is inserted.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="CSSClass" type="NonEmptyString" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  CSS Class for the field.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Filter" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  Shows a button on column header. Click on button shows distinct values in the column. User can select one or more values and grid will show ony those values.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:choice>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="DateRangeField">
+    <xs:annotation>
+      <xs:documentation>
+        Set of 2 DateTime fields where user can enter a Range of Date or Date and time.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="Field">
+        <xs:sequence>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Encryption" type="EncryptionType" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="DoNotSaveInDB" type="DoNotSaveInDBProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Help" type="HelpProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Static" type="StaticProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="SubmitIfStatic" type="SubmitIfStaticProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="NonStatic" type="NonStaticProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Hidden" type="HiddenProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="LabelStyle" type="LabelStyleProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="ControlStyle" type="ControlStyleProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="DateFormat" type="DateFormatProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Style" type="DateTimeStyles" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="DateFromRequired" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  For DateRange Field Type
+                  DateFrom part of DateRange will be required.
+                </xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:sequence>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="DateToRequired" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  For DateRange Field Type
+                  DateTo part of DateRange will be required.
+                </xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:sequence>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="Contiguous" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  For DateRange Field Type. Valid only for DateRange Field Type in RowFields and PopupFields of FormContainerGrid.
+                  This ensures the following
+                  The Date To of a row will be either same or 1 day less than Date From of next row.
+                  The Date To of last row will be null unless DateToRequired is set
+                </xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:sequence>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="NonOverlapping" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  For DateRange Field Type. Valid only for DateRange Field Type in RowFields and PopupFields of FormContainerGrid.
+                  This ensures following
+                  The date ranges of rows will not overlap with each other
+                </xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:sequence>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="Label" type="xs:string" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  Label for the field. If this node is not present the label is generated using Name of field. Before each capital letter in the Name a space is inserted.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="CSSClass" type="NonEmptyString" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  CSS Class for the field.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:choice>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="ButtonField">
+    <xs:annotation>
+      <xs:documentation>
+        Button field.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="Field">
+        <xs:sequence>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Style" maxOccurs="1" minOccurs="0">
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:enumeration value="Button"/>
+                  <xs:enumeration value="Link"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Shortcut" type="ShortcutProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Hidden" type="HiddenProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="NoSubmit" type="NoSubmitProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Help" type="HelpProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="ControlStyle" type="ControlStyleProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Label" type="xs:string" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  Label for the field. If this node is not present the label is generated using Name of field. Before each capital letter in the Name a space is inserted.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="CSSClass" type="NonEmptyString" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  CSS Class for the field.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:choice>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="RedirectField">
+    <xs:annotation>
+      <xs:documentation>
+        Create a button or a Link. Click will redirect to the Form given in FormName property, if FormName property is not present then will redirect to form with same name as the Name of the field.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="Field">
+        <xs:sequence>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Style" maxOccurs="1" minOccurs="0">
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:enumeration value="Button"/>
+                  <xs:enumeration value="Link"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Shortcut" type="ShortcutProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="ControlStyle" type="ControlStyleProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Help" type="HelpProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="FormName" type="NonEmptyString" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  Name of the form to to direct to, If this property is absent will redirect to Form with name as the name of this field.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Label" type="xs:string" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  Label for the field. If this node is not present the label is generated using Name of field. Before each capital letter in the Name a space is inserted.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="CSSClass" type="NonEmptyString" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  CSS Class for the field.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:choice>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="EmbeddedFormField">
+    <xs:annotation>
+      <xs:documentation>
+        Embedds a Form within a form
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="Field">
+        <xs:sequence>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="FormName" type="NonEmptyString" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  Name of the form to Embedded, If this property is absent will Embeedd Form with name as the name of this field.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Label" type="xs:string" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  Label for the field. If this node is not present the label is generated using Name of field. Before each capital letter in the Name a space is inserted.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="CSSClass" type="NonEmptyString" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  CSS Class for the field.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Hidden" type="HiddenProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+          </xs:choice>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="PasswordField">
+    <xs:annotation>
+      <xs:documentation>
+        Field in which user can enter password.
+        The Encryption is managed by the Application Logic. AppPress treats Password field as DoNotSaveInDB and does not save it when form containing the field is saved.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="Field">
+        <xs:sequence>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="MinChars" type="MaxCharsProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="MaxChars" type="MaxCharsProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="DoNotSaveInDB" type="DoNotSaveInDBProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Required" type="RequiredProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Help" type="HelpProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="LabelStyle" type="LabelStyleProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="ControlStyle" type="ControlStyleProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Label" type="xs:string" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  Label for the field. If this node is not present the label is generated using Name of field. Before each capital letter in the Name a space is inserted.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="CSSClass" type="NonEmptyString" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  CSS Class for the field.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:choice>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="TextAreaField">
+    <xs:annotation>
+      <xs:documentation>
+        TextArea Field where user can enter multiple lines of text.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="Field">
+        <xs:sequence>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Encryption" type="EncryptionType" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="MinChars" type="MaxCharsProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="MaxChars" type="MaxCharsProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Required" type="RequiredProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Help" type="HelpProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="DoNotSaveInDB" type="DoNotSaveInDBProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Static" type="StaticProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="SubmitIfStatic" type="SubmitIfStaticProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="NonStatic" type="NonStaticProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Hidden" type="HiddenProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="LabelStyle" type="LabelStyleProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="ControlStyle" type="ControlStyleProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Label" type="xs:string" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  Label for the field. If this node is not present the label is generated using Name of field. Before each capital letter in the Name a space is inserted.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="CSSClass" type="NonEmptyString" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  CSS Class for the field.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Style" type="TextAreaStyles" maxOccurs="1" minOccurs="0">
+            </xs:element>
+          </xs:choice>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="CheckboxField">
+    <xs:annotation>
+      <xs:documentation>
+        Button field.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="Field">
+        <xs:sequence>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="DoNotSaveInDB" type="DoNotSaveInDBProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Static" type="StaticProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="SubmitIfStatic" type="SubmitIfStaticProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="NonStatic" type="NonStaticProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Hidden" type="HiddenProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Help" type="HelpProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="LabelStyle" type="LabelStyleProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Label" type="xs:string" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  Label for the field. If this node is not present the label is generated using Name of field. Before each capital letter in the Name a space is inserted.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="CSSClass" type="NonEmptyString" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  CSS Class for the field.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Filter" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  Shows a button on column header. Click on button shows distinct values in the column. User can select one or more values and grid will show ony those values.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:choice>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="PickoneField">
+    <xs:annotation>
+      <xs:documentation>
+        Field which allows Picking one value from a set of Options. This can be shows as DropDown, Radio, AutoComplete.
+        To get the list of options for the Field. AppPress will call the Options function for the field if present in Logic.
+        If options function is not present. AppPress will see if a foreign Key exists on this field in the table of form containing this field. If foreign key exists AppPress will get the Id of the Option from Id Column and Value of option from first Varchar or Char column from the ForeignKey referenced table.
+        If options are generated from ForeignKey and style of the field is not AutoComplete, AppPress will cache the options. Any change in Lookup Table will need a application restart.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="Field">
+        <xs:sequence>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Style" maxOccurs="1" minOccurs="0">
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:enumeration value="DropDown"/>
+                  <xs:enumeration value="Radio"/>
+                  <xs:enumeration value="AutoComplete"/>
+                  <xs:enumeration value="ImageRotation"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Required" type="RequiredProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="DoNotSaveInDB" type="DoNotSaveInDBProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Static" type="StaticProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Help" type="HelpProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="SubmitIfStatic" type="SubmitIfStaticProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="NonStatic" type="NonStaticProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Hidden" type="HiddenProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Placeholder" type="NonEmptyString" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="TableName" type="TableNameProperty" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  Table to generate options. If not needed if column for this field has foreign key to the Options Table
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="LabelStyle" type="LabelStyleProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="ControlStyle" type="ControlStyleProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Label" type="xs:string" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  Label for the field. If this node is not present the label is generated using Name of field. Before each capital letter in the Name a space is inserted.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="CSSClass" type="NonEmptyString" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  CSS Class for the field.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Filter" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  Shows a button on column header. Click on button shows distinct values in the column. User can select one or more values and grid will show ony those values.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Sortable" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  Shows a icon on column header. Click on button sorts the grid.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:choice>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="PickMultipleField">
+    <xs:annotation>
+      <xs:documentation>
+        Field which allows picking up of multiple options from a set of options. Method of generating options is same as that of Pickone field type.
+        This field can have Inline Checkboxes and Popup Checkboxes style
+        To save the field Add TableName and ForeignKey Property.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="Field">
+        <xs:sequence>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Style" maxOccurs="1" minOccurs="0">
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:enumeration value="Checkboxes"/>
+                  <xs:enumeration value="DropDown"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="TableName" type="TableNameProperty" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  Table to generate options
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="ShowSelectAll" type="ShowSelectAllProperty" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  Show a select all check box
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="SaveTableName" type="TableNameProperty" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  Table where the selected options will be saved.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="SaveTableForeignKey" type="ForeignKeyProperty" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  Name of the column on above TableName which is a ForeignKey to Primary key of the Table of the Form containing this field.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="PartStyle" type="NonEmptyString" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="ContainerStyle" type="NonEmptyString" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  Style to be applied to the Container Div of the field. Do not use style='float:left', use float:left
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Required" type="RequiredProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Help" type="HelpProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="DoNotSaveInDB" type="DoNotSaveInDBProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Static" type="StaticProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="SubmitIfStatic" type="SubmitIfStaticProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="NonStatic" type="NonStaticProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Hidden" type="HiddenProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="LabelStyle" type="LabelStyleProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="ControlStyle" type="ControlStyleProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Label" type="xs:string" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  Label for the field. If this node is not present the label is generated using Name of field. Before each capital letter in the Name a space is inserted.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="CSSClass" type="NonEmptyString" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  CSS Class for the field.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:choice>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="NumberField">
+    <xs:annotation>
+      <xs:documentation>
+        Text Field in which user can enter a number with or without decimal digits.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="Field">
+        <xs:sequence>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Encryption" type="EncryptionType" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Required" type="RequiredProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Help" type="HelpProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="DoNotSaveInDB" type="DoNotSaveInDBProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Static" type="StaticProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="SubmitIfStatic" type="SubmitIfStaticProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="NonStatic" type="NonStaticProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Hidden" type="HiddenProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Placeholder" type="NonEmptyString" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="LabelStyle" type="LabelStyleProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="ControlStyle" type="ControlStyleProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Decimals" type="xs:int" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  Number of Decimals allowed for the field. Default is 0.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="MinimumValue" type="xs:decimal" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  Minimum Value for the field.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="MaximumValue" type="xs:decimal" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  For Number field Type.
+                  Maximum Value for the field.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="RegexValidation" type="RegexValidationProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="ZeroAsBlank" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  If the value of the field and field is Static, it will be shown as blank. Usefull for reports.
+                </xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:sequence>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="Label" type="xs:string" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  Label for the field. If this node is not present the label is generated using Name of field. Before each capital letter in the Name a space is inserted.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="CSSClass" type="NonEmptyString" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  CSS Class for the field.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Filter" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  Shows a button on column header. Click on button shows distinct values in the column. User can select one or more values and grid will show ony those values.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Sortable" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  Shows a icon on column header. Click on button sorts the grid.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:choice>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="FormContainerGridField">
+    <xs:annotation>
+      <xs:documentation>
+        Container for Child Forms displayed as Grid. Each row in the grid is a child form.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="Field">
+        <xs:sequence>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="RowFields" type="RowFields" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  <![CDATA[List of fields for Grid display FormContainerGrid. Each field will be shown as a column.
+                  By Default RowFields are Static. To make a field editable in RowFields add <NonStatic/> to the field.
+                  All Fields in RowFields marked NonStatic or Hidden are saved unless the field is Tagged with <DoNoSaveInDB/>.
+                  AppPress generates a Form with fieldName+Row for the rowFields.]]>
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="LabelStyle" type="LabelStyleProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="ControlStyle" type="ControlStyleProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="PopupTitle" type="xs:string" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  Title of the Popup. Use
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="PopupFields" type="PopupFields" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  List of fields for Popup display for FormContainerGrid. The fields will be shown on the Popup. A save button will be added to the popup.
+                  AppPress Generates a Form with Name as fieldName+Popup for Pop
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="ContainerFields" type="Fields" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  For Field Type FormContinerGrid, FomContainerInline
+                  List of fields to show on the heading of Form Container.
+                  In backend Logic fields here can access the FormContainer field using Container property
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="TableName" type="TableNameProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Help" type="HelpProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Label" type="xs:string" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  Label for the field. If this node is not present the label is generated using Name of field. Before each capital letter in the Name a space is inserted.
+                  Works like field Label except that %Count% is replaced by count of rows in the grid and %Label% is replaced by original Label.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="CSSClass" type="NonEmptyString" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  CSS Class for the field.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:choice>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="FormContainerDynamicField">
+    <xs:annotation>
+      <xs:documentation>
+        Container for Child Forms displayed inline.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="Field">
+        <xs:sequence>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="LabelStyle" type="LabelStyleProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="ControlStyle" type="ControlStyleProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Label" type="xs:string" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  Label for the field. If this node is not present the label is generated using Name of field. Before each capital letter in the Name a space is inserted.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Help" type="HelpProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="CSSClass" type="NonEmptyString" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  CSS Class for the field.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:choice>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="ExtensionField">
+    <xs:annotation>
+      <xs:documentation>
+        Button field.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="Field">
+        <xs:sequence>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Label" type="xs:string" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  Label for the field. If this node is not present the label is generated using Name of field. Before each capital letter in the Name a space is inserted.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Help" type="HelpProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="CSSClass" type="NonEmptyString" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  CSS Class for the field.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:choice>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  
+  <xs:complexType name="ParameterType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="Name" type="xs:string" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="MergedFormField">
+    <xs:annotation>
+      <xs:documentation>
+        Button field.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="Field">
+        <xs:sequence>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Static" type="StaticProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="SubmitIfStatic" type="SubmitIfStaticProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Parameter" type="ParameterType" maxOccurs="unbounded" minOccurs="0">
+            </xs:element>
+            <xs:element name="NonStatic" type="NonStaticProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Required" type="RequiredProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="DoNotSaveInDB" type="DoNotSaveInDBProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Style" maxOccurs="1" minOccurs="0">
+              <xs:simpleType>
+                <!--<xs:attribute name="Format" type="TimeFormatTypes">
+              </xs:attribute>-->
+                <xs:restriction base="xs:string">
+                  <xs:enumeration value="AutoComplete"/>
+                  <xs:enumeration value="DropDown"/>
+                  <xs:enumeration value="Radio"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Label" type="xs:string" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  Label for the field. If this node is not present the label is generated using Name of field. Before each capital letter in the Name a space is inserted.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Help" type="HelpProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="CSSClass" type="NonEmptyString" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  CSS Class for the field.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:choice>
+        </xs:sequence>
+        <xs:attribute name="Type" type="NonEmptyString">
+          <xs:annotation>
+            <xs:documentation>
+              Name of User Defined Control
+            </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="HTMLField">
+    <xs:annotation>
+      <xs:documentation>
+        Display Static Content on UI
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="Field">
+        <xs:sequence>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="LabelStyle" type="LabelStyleProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="Label" type="xs:string" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  Label for the field. If this node is not present the label is generated using Name of field. Before each capital letter in the Name a space is inserted.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Help" type="HelpProperty" maxOccurs="1" minOccurs="0">
+            </xs:element>
+            <xs:element name="CSSClass" type="NonEmptyString" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>
+                  CSS Class for the field.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:choice>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="ForeignKeyField">
+    <xs:annotation>
+      <xs:documentation>
+        Field defining ForeignKey from Table of Containing Form to Table of Form containing this field.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="Field">
+        <xs:sequence>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+          </xs:choice>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="RowFields">
+    <xs:annotation>
+      <xs:documentation>
+        Fields in the Row Form of the From Container Grid. Each field is displayed as column.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="Fields">
+        <xs:attribute name="Width" type="NonEmptyString">
+          <xs:annotation>
+            <xs:documentation>
+              Width of the From Container Grid Table. Can be entered as 100px, 40%.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Height" type="NonEmptyString">
+          <xs:annotation>
+            <xs:documentation>
+              Height of the From Container Grid Table. Should be entered as 100px.
+              If height is given the Table will have a vertical scroll bar for table body.
+              If Width of column header is more than maximum width of column cell the header will overlap with next column header. To correct this set the width of cell using LabelStyle.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Sortable" type="xs:boolean">
+          <xs:annotation>
+            <xs:documentation>
+              Makes Text,TextArea,Number,Checkbox,Pickone,DateTime,DateRange fields Sortable in the Grid
+            </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Pivot" type="xs:boolean">
+          <xs:annotation>
+            <xs:documentation>
+              Pivot the Grid
+            </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="PopupFields">
+    <xs:annotation>
+      <xs:documentation>
+        Fields in the Popup Form of the From Container Grid.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="Fields">
+        <xs:attribute name="PopupWidth" type="xs:int">
+          <xs:annotation>
+            <xs:documentation>
+              Width of the Popup in Pixel
+            </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="PopupHeight" type="xs:int">
+          <xs:annotation>
+            <xs:documentation>
+              Height of the Popup in Pixels
+            </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="PopupPosition" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>
+              Position of JQueryUI Popup. Look at https://jqueryui.com/position/
+            </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="Field">
+    <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="Name">
+      <xs:annotation>
+        <xs:documentation>
+          Name of the field. If the field is to be saved in Database the name of the field should be same as database column where it is to be saved.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Width">
+      <xs:annotation>
+        <xs:documentation>
+          For Fields in RowFields only. Width of the Column in Pixels.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="ReplaceFieldNameInMergedForm" type="xs:boolean">
+      <xs:annotation>
+        <xs:documentation>
+          For Fields in MergeForm only. The field with Replace true will have its name replaced with the MergedForm Field in destination form.
+          There should be only one field with Replace="true"
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="EncryptionType">
+    <xs:annotation>
+      <xs:documentation>
+        For Text, TextArea, Number and DateTime and DateRange field types
+        Encrypt the value in Database using the algorithm specified in Type attribute
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="Type">
+      <xs:annotation>
+        <xs:documentation>
+          Encryption Alogirithm to use.
+          The key for encryption is specified as EncryptionKey parameter in InitAppPress call from application.
+          It is job of application to keep the key securily.
+        </xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="AES"/>
+          <xs:enumeration value="DES"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:simpleType name="NonEmptyString">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:pattern value=".*[^\s].*" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="TimeFormatTypes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Hours"/>
+      <xs:enumeration value="Minutes"/>
+      <xs:enumeration value="Seconds"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="DateTimeStyles">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Date"/>
+      <xs:enumeration value="Month"/>
+      <xs:enumeration value="Time"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="TextAreaStyles">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="RichTextCKEditorBasic"/>
+      <xs:enumeration value="RichTextCKEditorStandard"/>
+      <xs:enumeration value="RichTextCKEditorFull"/>
+      <xs:enumeration value="UpperCase"/>
+      <xs:enumeration value="LowerCase"/>
+      <xs:enumeration value="TitleCase"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>

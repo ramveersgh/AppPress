@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>AppPress</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>http://apppress.in</licenseUrl>
+    <projectUrl>http://apppress.in</projectUrl>
+    <iconUrl>http://www.sysmates.com/images/bg_img2.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>Initial Release.</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>AppPress framework webtemplate application rapid</tags>
+  </metadata>
+</package>

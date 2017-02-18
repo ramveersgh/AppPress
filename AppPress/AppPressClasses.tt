@@ -1,0 +1,63 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="$(TargetPath)" #>
+<#@ import namespace="AppPressFramework" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+
+using System;
+using System.Collections.Generic;
+using System.Runtime.Serialization;
+
+namespace AppPressFramework {
+
+<#
+string[] xmlFiles = {
+};
+string[] jsFiles = {
+	Host.ResolvePath(@"AppPress_JS.js"),
+	Host.ResolvePath(@"shortcut.js")
+};
+string[] skinFiles = {
+//Host.ResolvePath(@"Skins\PageDesigner.html")
+};
+#>
+
+<#=AppPress.GenerateAppPressClasses(jsFiles,xmlFiles,skinFiles,null)#>
+
+/*
+// Paste Following into AppPressClasses.cs if not able to build AppPress.dll because of error in generating this file
+
+
+using System;
+using System.Collections.Generic;
+using AppPressFramework;
+
+namespace AppPress
+{
+
+
+	internal class FileTexts
+                    {
+                    internal static string AppPressJS = "";
+					internal static string PageDesignerHtml = "";
+                    }
+    public static class FormDefs
+    {
+        public static string CodeFragmentExecute(PageData a, int key)
+        {
+            return null;
+        }
+		public static FormDef PageDesignerFormDef;
+        public static FormDef SessionExpiredFormDef;
+        public static FormDef FieldFormDef;
+
+        public static FormDef[] formDefs = { };
+    }
+
+
+}
+*/
+}

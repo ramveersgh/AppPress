@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- To Enable Intellisense for this Document in Visual Studio goto
+Tools->Options->Text Editor->XML->Miscellaneous
+and Check Automatically Download DTDs and schemas
+-->
+<Forms
+    xmlns="AppPress"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="AppPress http://www.sysmates.com/AppPress.1.00.xsd ">
+
+  <Form Name="Login">
+    <NonSecure></NonSecure>
+    <Fields>
+      <HTML Name="AppAnalytics"></HTML>
+      <Text Name="ProductName">
+        <Static/>
+      </Text>
+      <Text Name="CompanyLogo">
+        <Static/>
+      </Text>
+      <HTML Name="DemoLogin"></HTML>
+      <Text Name="Email" >
+        <Required></Required>
+        <DoNotSaveInDB></DoNotSaveInDB>
+        <MaxChars>200</MaxChars>
+        <Encryption  Type="DES"></Encryption>
+      </Text>
+      <Password Name="Password" >
+        <Required></Required>
+      </Password>
+      <Button Name="Login" >
+        <Style>Button</Style>
+        <Shortcut><![CDATA[Enter]]></Shortcut>
+      </Button>
+      <Checkbox Name="RememberMe" ></Checkbox>
+      <Button Name="ForgotPassword" >
+        <Style>Link</Style>
+      </Button>
+    </Fields>
+  </Form>
+
+  <Form Name="ForgotPassword">
+    <MasterFormName>NonSecureMaster</MasterFormName>
+    <NonSecure></NonSecure>
+    <Fields>
+      <Text Name="Email" >
+        <Required></Required>
+        <DoNotSaveInDB></DoNotSaveInDB>
+        <MaxChars>200</MaxChars>
+        <Encryption Type="DES"></Encryption>
+      </Text>
+      <Button Name="SendPassword" >
+        <Style>Button</Style>
+        <Shortcut><![CDATA[Enter]]></Shortcut>
+      </Button>
+    </Fields>
+  </Form>
+
+</Forms>

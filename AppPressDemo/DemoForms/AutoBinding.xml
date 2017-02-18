@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- To Enable Intellisense for this Document in Visual Studio goto
+Tools->Options->Text Editor->XML->Miscellaneous
+and Check Automatically Download DTDs and schemas
+-->
+<Forms
+    xmlns="AppPress"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="AppPress http://www.sysmates.com/AppPress.1.00.xsd ">
+
+  <Form Name="AutoBinding">
+    <MasterFormName>Master</MasterFormName>
+    <Fields>
+      <Number Name="X">
+        <Decimals>2</Decimals>
+      </Number>
+      <Number Name="Y">
+        <Decimals>2</Decimals>
+      </Number>
+      <Number Name="XY">
+        <Decimals>2</Decimals>
+        <Static></Static>
+      </Number>
+      <Number Name="XPlusY">
+        <Label><![CDATA[X+Y]]></Label>
+        <Decimals>2</Decimals>
+        <Static></Static>
+      </Number>
+      <Pickone Name="Values">
+        <TableName>demo.Lookup.PickValues</TableName>
+      </Pickone>
+      <Pickone Name="SubValues">
+      </Pickone>
+      <Text Name="Search">
+        <DoNotSaveInDB></DoNotSaveInDB>
+      </Text>
+      <FormContainerGrid Name="Grid">
+        <TableName>demo.formcontainerdata</TableName>
+        <RowFields>
+          <Pickone Name="Animal"></Pickone>
+          <Text Name="Count"></Text>
+          <TextArea Name="Remark"></TextArea>
+        </RowFields>
+        <PopupFields>
+          <Pickone Name="Animal"></Pickone>
+          <Number Name="Count"></Number>
+          <TextArea Name="Remark"></TextArea>
+        </PopupFields>
+      </FormContainerGrid>
+    </Fields>
+  </Form>
+</Forms>

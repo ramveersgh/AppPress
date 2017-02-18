@@ -1,0 +1,124 @@
+﻿<div style="visibility:hidden;height:1px;">
+    <span id="_HelpSource">
+        <!--|AppPress.Help.Begin|-->
+        <a href='AppPressValue' target="_blank"></a><!--|AppPress.Help.End|-->
+    </span>>
+</div>
+<!--|AppPress.Description.Begin|-->
+<div id='AppPressContainerId' style="AppPressControlStyle" class="form-group"><div id='AppPressId'>AppPressValue</div></div>
+<!--|AppPress.Description.End|-->
+<div class="row">
+    <!--|AppPress.Logins.Begin|-->
+    <div class="col-md-4 col-sm-6 col-xs-12">
+        <div class="info-box">
+            <span class="info-box-icon" style="background-color:#990033"><i style="font-size:64px;color:white" class="fa fa-sign-in" aria-hidden="true"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text" id='AppPressContainerId'>Total Logins</span>
+                <span class="info-box-number" id='AppPressContainerId'>AppPressValue</span>
+            </div>
+        </div>
+    </div>
+</div>
+<!--|AppPress.Logins.End|-->
+<div class="row">
+    <div class="col-md-6">
+        <!--|ScriptBegin|-->
+        <!--|AppPress.HeadCountByGender.Begin|-->
+        google.charts.load('current', {packages: ['corechart']});
+        google.charts.setOnLoadCallback(drawChartHeadCountByGender);
+        var dataHeadCountByGender = null;
+        function drawChartHeadCountByGender() {
+        var totalHeadCount = 0;
+        var dataHeadCountByGender = new google.visualization.DataTable();
+        dataHeadCountByGender.addColumn('string', 'Head Count by Gender');
+        dataHeadCountByGender.addColumn('number', 'Head Count');
+        <!--|AppPress.HeadCountByGender.RowBegin|-->
+        <!--|AppPress.HeadCount.Begin|-->
+        var headCount=AppPressValue;
+        <!--|AppPress.HeadCount.End|-->
+        totalHeadCount += headCount;
+        <!--|AppPress.Id.Begin|-->
+        var Id=AppPressValue;
+        <!--|AppPress.Id.End|-->
+        <!--|AppPress.Gender.Begin|-->
+        dataHeadCountByGender.addRow(
+        ['AppPressValue '+headCount, {v:Id,f:headCount+''}]
+        );
+        <!--|AppPress.Gender.End|-->
+        <!--|AppPress.HeadCountByGender.RowEnd|-->
+        dataHeadCountByGender.addRow(['Total: '+totalHeadCount,0]);
+        var options = {
+        title: 'Head Count by Gender. Total: ' + totalHeadCount,
+        hAxis: { title: 'Gender', titleTextStyle: { color: 'red' } },
+        vAxis: { title: 'Count', minValue:0, maxValue:totalHeadCount, titleTextStyle: { color: 'red' }},
+        orientation: 'horizontal',
+        legend: {position: 'right'},
+        bar:{groupWidth:50},
+        tooltip: { trigger: 'selection' },
+        sliceVisibilityThreshold: 0,
+        is3D: true,
+        chartArea:{left:30,top:30,width:"85%",height:"85%"}
+        };
+        var chart = new google.visualization.PieChart(document.getElementById('AppPressContainerId'));
+        chart.setAction({
+        id: 'Gender', // An id is mandatory for all actions.
+        text: 'See Users', // The text displayed in the tooltip.
+        action: function() { // When clicked, the following runs.
+        selection = chart.getSelection()[0];
+        var column = selection.row;
+        var row = selection.column;
+        <!--|AppPress.Gender.Begin|-->
+        // Set Value of Hidden Field Gender to Gender Id
+        $(JQueryEscape('#AppPressId')).val(dataHeadCountByGender.getValue(column,1));
+        <!--|AppPress.Gender.End|-->
+        <!--|AppPress.GenderDetails.Begin|-->
+        // Perform the Click
+        $(JQueryEscape('#AppPressId')).click();
+        <!--|AppPress.GenderDetails.End|-->
+        }
+        });
+        chart.draw(dataHeadCountByGender, options);
+        }
+        <!--|ScriptEnd|-->
+        <!--|AppPress.GenderDetails.Begin|-->
+        <button id="AppPressId" onclick='AppPressOnClick' style="display:none"></button>
+        <!--|AppPress.GenderDetails.End|-->
+        <span class='help-block has-success' style="margin-left:5px;" id='AppPressHelpId'></span>
+        <div class="box" style="height: 300px;" id='AppPressContainerId'></div>
+        <!--|AppPress.Gender.Begin|-->
+        <input type='hidden' id='AppPressId' value='AppPressValue' />
+        <!--|AppPress.Gender.End|-->
+        <!--|AppPress.HeadCountByGender.End|-->
+    </div>
+</div>
+<!--|AppPress.AccordianSample.Begin|-->
+<div class="box box-solid" id="JobOpenings" style="padding-left:20px;padding-right:20px">
+    <div class="box-header with-border">
+        <span class="box-title" style="text-align: center;">AppPressDisplayName</span>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+        <div class="box-group" id="accordion">
+            <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
+            <!--|AppPress.AccordianSample.RowBegin|-->
+            <div class="panel box box-primary">
+                <div class="box-header with-border">
+                    <h4 class="box-title" style="width:100%">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseAppPressRowNumber">
+                            <!--|AppPress.Animal.Begin|--><span>AppPressValue</span><!--|AppPress.Animal.End|-->
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseAppPressRowNumber" class="panel-collapse collapse">
+                    <div class="box-body">
+                        Count: <!--|AppPress.Count.Begin|-->AppPressValue<!--|AppPress.Count.End|--><br />
+                        Remark:  <!--|AppPress.Remark.Begin|-->AppPressValue <!--|AppPress.Remark.End|--><br />
+                    </div>
+                </div>
+            </div>
+            <!--|AppPress.AccordianSample.RowEnd|-->
+        </div>
+    </div>
+    <!-- /.box-body -->
+</div>
+<!--|AppPress.AccordianSample.End|-->
